@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.galactichitchhiker.spacetrader.R;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
