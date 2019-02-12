@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">SpaceTrader</string>
+    <string name="app_name">Spacetrader</string>
+    <string name="action_settings">Settings</string>
 </resources>
