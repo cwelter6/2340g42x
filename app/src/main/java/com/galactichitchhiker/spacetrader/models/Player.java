@@ -28,7 +28,7 @@ public class Player {
         credits = 1000;
 
         currentShip = new Ship();
-        ownedShips = new ArrayList()<Ship>;
+        ownedShips = new ArrayList<Ship>();
         ownedShips.add(currentShip);
 
     }
