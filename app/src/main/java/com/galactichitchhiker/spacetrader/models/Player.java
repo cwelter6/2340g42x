@@ -1,5 +1,7 @@
 package com.galactichitchhiker.spacetrader.models;
 
+import java.util.ArrayList;
+
 public class Player {
 
     private String name;
@@ -11,7 +13,8 @@ public class Player {
 
     private int credits;
 
-    private Ship ship;
+    private Ship currentShip;
+    private ArrayList<Ship> ownedShips;
 
     public Player(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints) {
 
@@ -24,7 +27,9 @@ public class Player {
 
         credits = 1000;
 
-        ship = new Ship();
+        currentShip = new Ship();
+        ownedShips = new ArrayList()<Ship>;
+        ownedShips.add(currentShip);
 
     }
 
@@ -80,12 +85,20 @@ public class Player {
         return credits;
     }
 
-    public Ship getShip() {
-        return ship;
+    public Ship getCurrentShip() {
+        return currentShip;
     }
 
-    public void setShip(Ship ship) {
-        this.ship = ship;
+    public void setCurrentShip(Ship ship) {
+        this.currentShip = ship;
+    }
+
+    public ArrayList<Ship> getOwnedShips() {
+        return ownedShips;
+    }
+
+    public void addShip(Ship ship) {
+        ownedShips.add(ship);
     }
 
 }
