@@ -32,35 +32,35 @@ public class Player {
         this.name = name;
     }
 
-    public void getPilotPoints() {
+    public int getPilotPoints() {
         return pilotPoints;
     }
 
-    public void getEngineerPoints() {
+    public int getEngineerPoints() {
         return engineerPoints;
     }
 
-    public void getTraderPoints() {
+    public int getTraderPoints() {
         return traderPoints;
     }
 
-    public void getFighterPoints() {
+    public int getFighterPoints() {
         return fighterPoints;
     }
 
-    public int setPilotPoints(int pilotPoints) {
+    public void setPilotPoints(int pilotPoints) {
         this.pilotPoints = pilotPoints;
     }
 
-    public int setEngineerPoints(int engineerPoints) {
+    public void setEngineerPoints(int engineerPoints) {
         this.engineerPoints = engineerPoints;
     }
 
-    public int setTraderPoints(int traderPoints) {
+    public void setTraderPoints(int traderPoints) {
         this.traderPoints = traderPoints;
     }
 
-    public int setFighterPoints(int fighterPoints) {
+    public void setFighterPoints(int fighterPoints) {
         this.fighterPoints = fighterPoints;
     }
 
