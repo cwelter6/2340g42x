@@ -10,6 +10,7 @@ public class Player {
     private int engineerPoints;
     private int traderPoints;
     private int fighterPoints;
+    private final int MAXIMUM_SKILL_POINTS = 16;
 
     private int credits;
 
@@ -71,6 +72,10 @@ public class Player {
 
     public void setFighterPoints(int fighterPoints) {
         this.fighterPoints = fighterPoints;
+    }
+
+    public int getMaximumSkillPoints() {
+        return MAXIMUM_SKILL_POINTS;
     }
 
     public void addCredits(int add) {
