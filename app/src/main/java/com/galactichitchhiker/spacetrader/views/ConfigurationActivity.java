@@ -1,5 +1,6 @@
 package com.galactichitchhiker.spacetrader.views;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -43,7 +44,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         gameDifficultySpinner = findViewById(R.id.game_difficulty_spinner);
         Button startButton = findViewById(R.id.start_game_button);
 
-        Integer[] possibleSkillPoints = new Integer[player.getMaximumSkillPoints()];
+        Integer[] possibleSkillPoints = new Integer[16];
         for (int i = 0; i < possibleSkillPoints.length; i++) {
             possibleSkillPoints[i] = i + 1;
         }
@@ -72,6 +73,8 @@ public class ConfigurationActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, Game.GameDifficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gameDifficultySpinner.setAdapter(difficultyAdapter);
+
+        viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
