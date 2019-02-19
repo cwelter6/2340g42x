@@ -4,7 +4,10 @@ public class Ship {
 
     private ShipType type;
 
-    public Ship() {
+    /**
+     * constructor of Ship
+     */
+    Ship() {
         type = ShipType.GNAT;
     }
 
