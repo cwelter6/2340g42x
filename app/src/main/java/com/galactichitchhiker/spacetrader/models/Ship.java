@@ -7,7 +7,7 @@ public class Ship {
     /**
      * constructor of Ship
      */
-    Ship() {
+    public Ship() {
         type = ShipType.GNAT;
     }
 
