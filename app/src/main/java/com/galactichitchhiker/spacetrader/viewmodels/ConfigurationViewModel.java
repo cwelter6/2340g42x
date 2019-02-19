@@ -14,6 +14,17 @@ public class ConfigurationViewModel extends AndroidViewModel {
     }
     private Model model;
 
+    /**
+     * create a Model
+     *
+     * @param name name of the Player
+     * @param pilotPoints pilotPoints of the Player
+     * @param engineerPoints engineerPoints of the Player
+     * @param traderPoints traderPoints of the Player
+     * @param fighterPoints fighterPoints of the Player
+     * @param difficultyLevel difficultyLevel of the Player
+     * @return the result message
+     */
     public String createModel(String name, int pilotPoints, int engineerPoints, int traderPoints,
                             int fighterPoints, Game.GameDifficulty difficultyLevel) {
         int pointSum = pilotPoints + engineerPoints + traderPoints + fighterPoints;
