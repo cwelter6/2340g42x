@@ -34,7 +34,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player_name_text" />
+        app:layout_constraintTop_toBottomOf="@id/player_name_text" />
 
     <TextView
         android:id="@+id/pilot_header"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.321"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/skill_points_header" />
+        app:layout_constraintTop_toBottomOf="@id/skill_points_header" />
 
     <TextView
         android:id="@+id/engineer_header"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pilot_header" />
+        app:layout_constraintTop_toBottomOf="@id/pilot_header" />
 
     <TextView
         android:id="@+id/trader_header"
@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.334"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/engineer_header" />
+        app:layout_constraintTop_toBottomOf="@id/engineer_header" />
 
     <TextView
         android:id="@+id/fighter_header"
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.338"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trader_header" />
+        app:layout_constraintTop_toBottomOf="@id/trader_header" />
 
     <TextView
         android:id="@+id/game_difficulty_header"
@@ -104,7 +104,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fighter_header" />
+        app:layout_constraintTop_toBottomOf="@id/fighter_header" />
 
     <TextView
         android:id="@+id/player_name_text"
@@ -124,9 +124,9 @@
         android:layout_marginStart="8dp"
         android:text="<pilotPoints>"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/pilot_header"
-        app:layout_constraintStart_toEndOf="@+id/pilot_header"
-        app:layout_constraintTop_toTopOf="@+id/pilot_header" />
+        app:layout_constraintBottom_toBottomOf="@id/pilot_header"
+        app:layout_constraintStart_toEndOf="@id/pilot_header"
+        app:layout_constraintTop_toTopOf="@id/pilot_header" />
 
     <TextView
         android:id="@+id/engineer_points_text"
@@ -135,9 +135,9 @@
         android:layout_marginStart="8dp"
         android:text="<engineerPoints>"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/engineer_header"
-        app:layout_constraintStart_toEndOf="@+id/engineer_header"
-        app:layout_constraintTop_toTopOf="@+id/engineer_header" />
+        app:layout_constraintBottom_toBottomOf="@id/engineer_header"
+        app:layout_constraintStart_toEndOf="@id/engineer_header"
+        app:layout_constraintTop_toTopOf="@id/engineer_header" />
 
     <TextView
         android:id="@+id/trader_points_text"
@@ -146,9 +146,9 @@
         android:layout_marginStart="8dp"
         android:text="<traderPoints>"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/trader_header"
-        app:layout_constraintStart_toEndOf="@+id/trader_header"
-        app:layout_constraintTop_toTopOf="@+id/trader_header" />
+        app:layout_constraintBottom_toBottomOf="@id/trader_header"
+        app:layout_constraintStart_toEndOf="@id/trader_header"
+        app:layout_constraintTop_toTopOf="@id/trader_header" />
 
     <TextView
         android:id="@+id/fighter_points_text"
@@ -157,9 +157,9 @@
         android:layout_marginStart="8dp"
         android:text="<fighterPoints>"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fighter_header"
-        app:layout_constraintStart_toEndOf="@+id/fighter_header"
-        app:layout_constraintTop_toTopOf="@+id/fighter_header" />
+        app:layout_constraintBottom_toBottomOf="@id/fighter_header"
+        app:layout_constraintStart_toEndOf="@id/fighter_header"
+        app:layout_constraintTop_toTopOf="@id/fighter_header" />
 
     <TextView
         android:id="@+id/game_difficulty_text"
@@ -172,6 +172,6 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_difficulty_header" />
+        app:layout_constraintTop_toBottomOf="@id/game_difficulty_header" />
 
 </android.support.constraint.ConstraintLayout>
