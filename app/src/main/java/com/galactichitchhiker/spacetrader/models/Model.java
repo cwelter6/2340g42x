@@ -1,30 +1,39 @@
 package com.galactichitchhiker.spacetrader.models;
 
+/**
+ * Holds game object
+ * 
+ */
 public class Model {
+
     private Game game;
 
     private static Model model;
 
     /**
-     * constructor of the model
-     * @param name name of the Player
-     * @param pilotPoints pilotPoints of the Player
-     * @param engineerPoints engineerPoints of the Player
-     * @param traderPoints traderPoints of the Player
-     * @param fighterPoints fighterPoints of the Player
-     * @param difficultyLevel difficultyLevel of the Player
+     * Constructs a model object
+     * 
+     * @param name            - Player's name
+     * @param pilotPoints     - pilot skill points
+     * @param engineerPoints  - engineer skill points
+     * @param traderPoints    - trader skill points
+     * @param fighterPoints   - fighter skill points
+     * @param difficultyLevel - game difficulty level
      */
-    public Model(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints, Game.GameDifficulty difficultyLevel) {
+    public Model(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints,
+            Game.GameDifficulty difficultyLevel) {
         game = new Game(name, pilotPoints, engineerPoints, traderPoints, fighterPoints, difficultyLevel);
 
         model = this;
     }
 
     /**
-     * get instance
+     * Get Model instance
+     * 
      * @return model
      */
-    public static Model getInstance(){
+    public static Model getInstance() {
         return model;
     }
+
 }
