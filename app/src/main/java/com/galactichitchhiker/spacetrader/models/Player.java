@@ -2,6 +2,10 @@ package com.galactichitchhiker.spacetrader.models;
 
 import java.util.ArrayList;
 
+/**
+ * Holds player information
+ * 
+ */
 public class Player {
 
     private String name;
@@ -18,12 +22,13 @@ public class Player {
     private ArrayList<Ship> ownedShips;
 
     /**
-     * constructor of player
-     * @param name name of the Player
-     * @param pilotPoints pilotPoints of the Player
-     * @param engineerPoints engineerPoints of the Player
-     * @param traderPoints traderPoints of the Player
-     * @param fighterPoints fighterPoints of the Player
+     * Creates a player object
+     *
+     * @param name           - Player's name
+     * @param pilotPoints    - pilot skill points
+     * @param engineerPoints - engineer skill points
+     * @param traderPoints   - trader skill points
+     * @param fighterPoints  - fighter skill points
      */
     public Player(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints) {
 
@@ -43,127 +48,143 @@ public class Player {
     }
 
     /**
-     * getter of name
-     * @return name
+     * Get player's name
+     *
+     * @return String
      */
     public String getName() {
         return name;
     }
 
     /**
-     * setter of name
-     * @param name name
+     * Set player's name
+     *
+     * @param name Player's name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * getter of pilot points
-     * @return pilotPoints
+     * Get pilot skill points
+     * 
+     * @return int
      */
     public int getPilotPoints() {
         return pilotPoints;
     }
 
     /**
-     * getter of engineerPoints
-     * @return engineerPoints
+     * Get engineer skill points
+     * 
+     * @return int
      */
     public int getEngineerPoints() {
         return engineerPoints;
     }
 
     /**
-     * getter of traderPoints
-     * @return traderPoints
+     * Get trader skill points
+     * 
+     * @return int
      */
     public int getTraderPoints() {
         return traderPoints;
     }
 
     /**
-     * getter of fighterPoints
-     * @return fighterPoints
+     * Get fighter skill points
+     * 
+     * @return int
      */
     public int getFighterPoints() {
         return fighterPoints;
     }
 
     /**
-     * setter of pilotPoints
-     * @param pilotPoints pilotPoints
+     * Set pilot skill points
+     * 
+     * @param pilotPoints
      */
     public void setPilotPoints(int pilotPoints) {
         this.pilotPoints = pilotPoints;
     }
 
     /**
-     * setter of engineerPoints
-     * @param engineerPoints engineerPoints
+     * Set engineer skill points
+     * 
+     * @param engineerPoints
      */
     public void setEngineerPoints(int engineerPoints) {
         this.engineerPoints = engineerPoints;
     }
 
     /**
-     * setter of engineerPoints
-     * @param traderPoints traderPoints
+     * Set trader skill points
+     * 
+     * @param traderPoints
      */
     public void setTraderPoints(int traderPoints) {
         this.traderPoints = traderPoints;
     }
 
     /**
-     * setter of fighterPoints
-     * @param fighterPoints fighterPoints
+     * Set fighter skill points
+     * 
+     * @param fighterPoints
      */
     public void setFighterPoints(int fighterPoints) {
         this.fighterPoints = fighterPoints;
     }
 
     /**
-     * getter of MAXIMUM_SKILL_POINTS
-     * @return MAXIMUM_SKILL_POINTS
+     * Get maximum sum of skill points for player
+     * 
+     * @return int
      */
     public int getMaximumSkillPoints() {
         return MAXIMUM_SKILL_POINTS;
     }
 
     /**
-     * add credits
-     * @param add add
+     * Give credits to player
+     * 
+     * @param add - number of credits to add
      */
     public void addCredits(int add) {
         this.credits += add;
     }
 
     /**
-     * subtract credits
-     * @param subtract subtract
+     * Take credits from player
+     * 
+     * @param subtract - number of credits to subtract
      */
     public void subtractCredits(int subtract) {
         this.credits -= subtract;
     }
 
     /**
-     * getter of credits
-     * @return credits
+     * Get number of player's credits
+     * 
+     * @return credits - int
      */
     public int getCredits() {
         return credits;
     }
 
     /**
-     * getter of ship
-     * @return currentShip
+     * Get player's current ship
+     * 
+     * @return Ship
      */
     public Ship getCurrentShip() {
         return currentShip;
     }
 
     /**
-     * setter of ship
+     * Set player's current ship
+     * 
      * @param ship ship
      */
     public void setCurrentShip(Ship ship) {
@@ -171,15 +192,17 @@ public class Player {
     }
 
     /**
-     * get owned ships
-     * @return owned ships
+     * Get list of all player's owned ships
+     * 
+     * @return ArrayList<Ship>
      */
     public ArrayList<Ship> getOwnedShips() {
         return ownedShips;
     }
 
     /**
-     * add ship
+     * Add ship to player's list of ships
+     * 
      * @param ship ship
      */
     public void addShip(Ship ship) {
