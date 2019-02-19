@@ -2,4 +2,5 @@
     <string name="app_name">Spacetrader</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_configuration">ConfigurationActivity</string>
+    <string name="title_activity_player_information">PlayerInformationActivity</string>
 </resources>
