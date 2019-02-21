@@ -102,8 +102,10 @@ public class ConfigurationActivity extends AppCompatActivity {
         Log.d("Edit", "Total Points Used: " + (pilotPoints + engineerPoints + traderPoints + fighterPoints));
         Log.d("Edit", "Game Difficulty: " + difficulty);
 
-        viewModel.createModel(playerName, pilotPoints, engineerPoints, traderPoints, fighterPoints,
+        String report = viewModel.createModel(playerName, pilotPoints, engineerPoints, traderPoints, fighterPoints,
                 difficulty);
+
+        Log.d("Edit", "ViewModel Report: " + report);
 
         //pass these values to the viewmodel
         //viewmodel should check the values and create the player
