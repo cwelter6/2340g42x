@@ -1,6 +1,7 @@
 package com.galactichitchhiker.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.galactichitchhiker.spacetrader.R;
 import com.galactichitchhiker.spacetrader.models.Game;
@@ -92,25 +94,33 @@ public class ConfigurationActivity extends AppCompatActivity {
         int traderPoints = (int) traderSpinner.getSelectedItem();
         int fighterPoints = (int) fighterSpinner.getSelectedItem();
         String playerName = nameField.getText().toString();
-        Game.GameDifficulty difficulty = (Game.GameDifficulty) gameDifficultySpinner.getSelectedItem();
+        Game.GameDifficulty difficulty = (Game.GameDifficulty) gameDifficultySpinner
+                .getSelectedItem();
 
         Log.d("Edit", "Player Name: " + playerName);
         Log.d("Edit", "Pilot Points: " + pilotPoints);
         Log.d("Edit", "Engineer Points: " + engineerPoints);
         Log.d("Edit", "Trader Points: " + traderPoints);
         Log.d("Edit", "Fighter Points: " + fighterPoints);
-        Log.d("Edit", "Total Points Used: " + (pilotPoints + engineerPoints + traderPoints + fighterPoints));
+        Log.d("Edit", "Total Points Used: " + (pilotPoints + engineerPoints + traderPoints
+                + fighterPoints));
         Log.d("Edit", "Game Difficulty: " + difficulty);
 
-        String report = viewModel.createModel(playerName, pilotPoints, engineerPoints, traderPoints, fighterPoints,
-                difficulty);
+        String report = viewModel.createModel(playerName, pilotPoints, engineerPoints, traderPoints,
+                fighterPoints, difficulty);
 
         Log.d("Edit", "ViewModel Report: " + report);
 
-        //pass these values to the viewmodel
-        //viewmodel should check the values and create the player
-
-        finish();
+        if (report != "success") {
+            Toast.makeText(ConfigurationActivity.this, report, Toast.LENGTH_LONG).show();
+        } else {
+            Log.d("Edit", "Before creating intent");
+            Intent intent = new Intent(ConfigurationActivity.this,
+                    PlayerInformationActivity.class);
+            Log.d("Edit", "Created intent");
+            startActivity(intent);
+            Log.d("Edit", "Start activity");
+        }
     }
 
 }
