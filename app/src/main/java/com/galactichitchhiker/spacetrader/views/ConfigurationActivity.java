@@ -44,11 +44,13 @@ public class ConfigurationActivity extends AppCompatActivity {
         gameDifficultySpinner = findViewById(R.id.game_difficulty_spinner);
         Button startButton = findViewById(R.id.start_game_button);
 
+        //create the array of the skill point spinner for each skill
         Integer[] possibleSkillPoints = new Integer[16];
         for (int i = 0; i < possibleSkillPoints.length; i++) {
             possibleSkillPoints[i] = i + 1;
         }
 
+        //making a spinner for each skill
         ArrayAdapter<Integer> pilotAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, possibleSkillPoints);
         pilotAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,6 +71,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         fighterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fighterSpinner.setAdapter(fighterAdapter);
 
+        //make the spinner for the difficulty level
         ArrayAdapter<Game.GameDifficulty> difficultyAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Game.GameDifficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
