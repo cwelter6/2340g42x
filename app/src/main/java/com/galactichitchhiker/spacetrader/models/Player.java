@@ -1,5 +1,6 @@
 package com.galactichitchhiker.spacetrader.models;
 
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ public class Player {
     private int credits;
 
     private Ship currentShip;
-    private ArrayList<Ship> ownedShips;
+    private List<Ship> ownedShips;
 
     /**
      * Creates a player object
@@ -194,9 +195,9 @@ public class Player {
     /**
      * Get list of all player's owned ships
      * 
-     * @return ArrayList<Ship>
+     * @return List<Ship>
      */
-    public ArrayList<Ship> getOwnedShips() {
+    public List<Ship> getOwnedShips() {
         return ownedShips;
     }
 

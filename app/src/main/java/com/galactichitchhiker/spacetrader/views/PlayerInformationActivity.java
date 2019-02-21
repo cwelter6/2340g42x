@@ -1,15 +1,19 @@
 package com.galactichitchhiker.spacetrader.views;
 
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.galactichitchhiker.spacetrader.R;
-import com.galactichitchhiker.spacetrader.models.Game;
 import com.galactichitchhiker.spacetrader.models.Model;
-import com.galactichitchhiker.spacetrader.models.Player;
+import com.galactichitchhiker.spacetrader.viewmodels.ConfigurationViewModel;
+import com.galactichitchhiker.spacetrader.viewmodels.PlayerInformationViewModel;
 
+
+//you have to have a view model for each view
 public class PlayerInformationActivity extends AppCompatActivity {
 
     private TextView playerNameText;
@@ -18,8 +22,8 @@ public class PlayerInformationActivity extends AppCompatActivity {
     private TextView traderPointsText;
     private TextView fighterPointsText;
     private TextView gameDifficultyText;
-
-    private Model model;
+    
+    PlayerInformationViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +39,14 @@ public class PlayerInformationActivity extends AppCompatActivity {
         fighterPointsText = findViewById(R.id.fighter_points_text);
         gameDifficultyText = findViewById(R.id.game_difficulty_text);
 
-        model = Model.getInstance();
+        viewModel = ViewModelProviders.of(this).get(PlayerInformationViewModel.class);
 
-        playerNameText.setText(model.getName());
-        pilotPointsText.setText(Integer.toString(model.getPilotPoints()));
-        engineerPointsText.setText(String.format("%d", model.getEngineerPoints()));
-        traderPointsText.setText(String.format("%d", model.getTraderPoints()));
-        fighterPointsText.setText(String.format("%d", model.getFighterPoints()));
-        gameDifficultyText.setText(model.getDifficultyLevel().toString());
+        playerNameText.setText(viewModel.getGame().getName());
+        pilotPointsText.setText(Integer.toString(viewModel.getGame().getPlayer().getPilotPoints()));
+        engineerPointsText.setText(String.format("%d", viewModel.getGame().getPlayer().getEngineerPoints()));
+        traderPointsText.setText(String.format("%d", viewModel.getGame().getPlayer().getTraderPoints()));
+        fighterPointsText.setText(String.format("%d", viewModel.getGame().getPlayer().getFighterPoints()));
+        gameDifficultyText.setText(viewModel.getGame().getDifficultyLevel().toString());
 
     }
 
