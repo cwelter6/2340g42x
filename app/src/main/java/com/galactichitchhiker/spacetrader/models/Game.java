@@ -31,6 +31,24 @@ public class Game {
         EASY, NORMAL, HARD, DIFFICULT
     }
 
+    /**
+     * Get Player instance
+     *
+     * @return player
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * Get game difficulty
+     *
+     * @return GameDifficulty
+     */
+    public GameDifficulty getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
     private GameDifficulty difficultyLevel = GameDifficulty.NORMAL;
 
 

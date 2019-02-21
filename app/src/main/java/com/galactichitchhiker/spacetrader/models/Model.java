@@ -29,11 +29,19 @@ public class Model {
 
     /**
      * Get Model instance
-     * 
+     *
      * @return model
      */
     public static Model getInstance() {
         return model;
     }
 
+    /**
+     * Get Game instance
+     *
+     * @return game
+     */
+    public Game getGame() {
+        return game;
+    }
 }
