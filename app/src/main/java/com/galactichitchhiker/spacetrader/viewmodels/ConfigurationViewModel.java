@@ -33,10 +33,10 @@ public class ConfigurationViewModel extends AndroidViewModel {
             model = new Model(name, pilotPoints, engineerPoints, traderPoints, fighterPoints, difficultyLevel);
             return "success";
         } else if (pointSum != MAXIMUM_SKILL_POINTS) {
-            return "the total skill points have to be 16";
+            return "Error: The total skill points have to be 16";
         } else if (name == null) {
-            return "the name of the player can not be null";
+            return "Error: The name of the player can not be null";
         }
-        return "some kind of error";
+        return "An error occured...";
     }
 }
