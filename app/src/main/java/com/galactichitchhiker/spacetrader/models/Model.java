@@ -162,7 +162,7 @@ public class Model {
      * @return GameDifficulty
      */
     public Game.GameDifficulty getDifficultyLevel() {
-        return difficultyLevel;
+        return game.getDifficultyLevel();
     }
 
     /**

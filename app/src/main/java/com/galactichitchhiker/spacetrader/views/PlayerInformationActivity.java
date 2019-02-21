@@ -38,7 +38,7 @@ public class PlayerInformationActivity extends AppCompatActivity {
         model = Model.getInstance();
 
         playerNameText.setText(model.getName());
-        pilotPointsText.setText(String.format("%d", model.getPilotPoints()));
+        pilotPointsText.setText(Integer.toString(model.getPilotPoints()));
         engineerPointsText.setText(String.format("%d", model.getEngineerPoints()));
         traderPointsText.setText(String.format("%d", model.getTraderPoints()));
         fighterPointsText.setText(String.format("%d", model.getFighterPoints()));
