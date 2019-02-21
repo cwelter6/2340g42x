@@ -1,5 +1,9 @@
 package com.galactichitchhiker.spacetrader.models;
 
+/**
+ * Holds ship information
+ * 
+ */
 public class Ship {
 
     private ShipType type;

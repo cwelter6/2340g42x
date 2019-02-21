@@ -1,16 +1,22 @@
 package com.galactichitchhiker.spacetrader.models;
 
+/**
+ * Holds current game and player object
+ * 
+ */
 public class Game {
+    
     private Player player;
 
     /**
-     * constructor of Game
-     * @param name name of the Player
-     * @param pilotPoints pilotPoints of the Player
-     * @param engineerPoints engineerPoints of the Player
-     * @param traderPoints traderPoints of the Player
-     * @param fighterPoints fighterPoints of the Player
-     * @param difficultyLevel difficultyLevel of the Player
+     * Constructs a new game object
+     * 
+     * @param name            - Player's name
+     * @param pilotPoints     - pilot skill points
+     * @param engineerPoints  - engineer skill points
+     * @param traderPoints    - trader skill points
+     * @param fighterPoints   - fighter skill points
+     * @param difficultyLevel - game difficulty level
      */
     public Game(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints, GameDifficulty difficultyLevel){
         this.difficultyLevel = difficultyLevel;
@@ -19,7 +25,7 @@ public class Game {
     }
 
     /**
-     * enum class for GameDifficulty
+     * Enum for game difficulty level
      */
     public enum GameDifficulty {
         EASY, NORMAL, HARD, DIFFICULT
