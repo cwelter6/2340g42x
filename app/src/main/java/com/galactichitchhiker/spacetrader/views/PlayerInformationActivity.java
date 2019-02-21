@@ -19,6 +19,8 @@ public class PlayerInformationActivity extends AppCompatActivity {
     private TextView fighterPointsText;
     private TextView gameDifficultyText;
 
+    private Model model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +35,14 @@ public class PlayerInformationActivity extends AppCompatActivity {
         fighterPointsText = findViewById(R.id.fighter_points_text);
         gameDifficultyText = findViewById(R.id.game_difficulty_text);
 
-        Game game = Model.getInstance().getGame();
-        Player player = Model.getInstance().getGame().getPlayer();
+        model = Model.getInstance();
 
-        playerNameText.setText(player.getName());
-        pilotPointsText.setText(String.format("%d", player.getPilotPoints()));
-        engineerPointsText.setText(String.format("%d", player.getEngineerPoints()));
-        traderPointsText.setText(String.format("%d", player.getTraderPoints()));
-        fighterPointsText.setText(String.format("%d", player.getFighterPoints()));
-        gameDifficultyText.setText(game.getDifficultyLevel().toString());
+        playerNameText.setText(model.getName());
+        pilotPointsText.setText(String.format("%d", model.getPilotPoints()));
+        engineerPointsText.setText(String.format("%d", model.getEngineerPoints()));
+        traderPointsText.setText(String.format("%d", model.getTraderPoints()));
+        fighterPointsText.setText(String.format("%d", model.getFighterPoints()));
+        gameDifficultyText.setText(model.getDifficultyLevel().toString());
 
     }
 

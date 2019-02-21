@@ -157,6 +157,15 @@ public class Model {
     }
 
     /**
+     * Get game difficulty
+     *
+     * @return GameDifficulty
+     */
+    public Game.GameDifficulty getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    /**
      * Give credits to player
      *
      * @param add - number of credits to add
