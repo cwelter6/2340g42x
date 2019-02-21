@@ -3,12 +3,9 @@ package com.galactichitchhiker.spacetrader.models;
 import java.util.ArrayList;
 
 /**
- * Holds information about player
- *
- * @author Adeeb Zaman
- * @version 1.0
+ * Holds player information
+ * 
  */
-
 public class Player {
 
     private String name;
@@ -25,9 +22,9 @@ public class Player {
     private ArrayList<Ship> ownedShips;
 
     /**
-     * Constructs new player object with a default ship
+     * Creates a player object
      *
-     * @param name           - name of player
+     * @param name           - Player's name
      * @param pilotPoints    - pilot skill points
      * @param engineerPoints - engineer skill points
      * @param traderPoints   - trader skill points
@@ -51,25 +48,25 @@ public class Player {
     }
 
     /**
-     * Returns name of player
-     * 
-     * @return String - name of player
+     * Get player's name
+     *
+     * @return String
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Set name of player
-     * 
-     * @param name
+     * Set player's name
+     *
+     * @param name Player's name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Return pilot skill points
+     * Get pilot skill points
      * 
      * @return int
      */
@@ -78,7 +75,7 @@ public class Player {
     }
 
     /**
-     * Return engineer skill points
+     * Get engineer skill points
      * 
      * @return int
      */
@@ -87,7 +84,7 @@ public class Player {
     }
 
     /**
-     * Return trader skill points
+     * Get trader skill points
      * 
      * @return int
      */
@@ -96,7 +93,7 @@ public class Player {
     }
 
     /**
-     * Return fighter skill points
+     * Get fighter skill points
      * 
      * @return int
      */
@@ -141,7 +138,7 @@ public class Player {
     }
 
     /**
-     * Get max number of skill points
+     * Get maximum sum of skill points for player
      * 
      * @return int
      */
@@ -150,7 +147,7 @@ public class Player {
     }
 
     /**
-     * Add credits to player
+     * Give credits to player
      * 
      * @param add - number of credits to add
      */
@@ -159,7 +156,7 @@ public class Player {
     }
 
     /**
-     * Subtract credits from player
+     * Take credits from player
      * 
      * @param subtract - number of credits to subtract
      */
@@ -168,9 +165,9 @@ public class Player {
     }
 
     /**
-     * Return number of credits player has
+     * Get number of player's credits
      * 
-     * @return int - credits
+     * @return credits - int
      */
     public int getCredits() {
         return credits;
@@ -188,14 +185,14 @@ public class Player {
     /**
      * Set player's current ship
      * 
-     * @param ship
+     * @param ship ship
      */
     public void setCurrentShip(Ship ship) {
         this.currentShip = ship;
     }
 
     /**
-     * Get list of player's ships
+     * Get list of all player's owned ships
      * 
      * @return ArrayList<Ship>
      */
@@ -204,9 +201,9 @@ public class Player {
     }
 
     /**
-     * Add a ship to player's list of ships
+     * Add ship to player's list of ships
      * 
-     * @param ship
+     * @param ship ship
      */
     public void addShip(Ship ship) {
         ownedShips.add(ship);

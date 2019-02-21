@@ -1,15 +1,15 @@
 package com.galactichitchhiker.spacetrader.models;
 
 /**
- * Holds information related to ship object
+ * Holds ship information
+ * 
  */
 public class Ship {
 
     private ShipType type;
 
-
     /**
-     * Constructs a ship object with default type GNAT
+     * constructor of Ship
      */
     public Ship() {
         type = ShipType.GNAT;
