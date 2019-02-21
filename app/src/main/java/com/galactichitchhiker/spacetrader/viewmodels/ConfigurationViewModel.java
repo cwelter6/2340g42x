@@ -54,7 +54,7 @@ public class ConfigurationViewModel extends AndroidViewModel {
 
 
         int pointSum = pilotPoints + engineerPoints + traderPoints + fighterPoints;
-        if (pointSum == MAXIMUM_SKILL_POINTS && name != null) {
+        if (pointSum == MAXIMUM_SKILL_POINTS && name.length() != 0) {
             model = new Model(name, pilotPoints, engineerPoints, traderPoints, fighterPoints, difficultyLevel);
             return "success";
         } else if (name.length() == 0) {
