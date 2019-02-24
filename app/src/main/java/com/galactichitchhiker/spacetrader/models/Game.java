@@ -1,10 +1,9 @@
 package com.galactichitchhiker.spacetrader.models;
 
 import java.util.List;
-import java.util.List;
 
 /**
- * Holds current game and player object
+ * Holds current player object and all other information needed to set up a game
  * 
  */
 public class Game {
@@ -16,6 +15,7 @@ public class Game {
 
     private Ship currentShip;
     private List<Ship> ownedShips;
+    //highly doubt if we should put variables and getters/setters relate to ship in this class
 
     /**
      * Constructs a new game object
@@ -30,7 +30,6 @@ public class Game {
     public Game(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints, GameDifficulty difficultyLevel){
         this.difficultyLevel = difficultyLevel;
         player = new Player(name, pilotPoints, engineerPoints, traderPoints, fighterPoints);
-
     }
 
     /**

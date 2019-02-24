@@ -39,6 +39,7 @@ public class PlayerInformationActivity extends AppCompatActivity {
         fighterPointsText = findViewById(R.id.fighter_points_text);
         gameDifficultyText = findViewById(R.id.game_difficulty_text);
 
+        //get data from view model instead of from model
         viewModel = ViewModelProviders.of(this).get(PlayerInformationViewModel.class);
 
         playerNameText.setText(viewModel.getGame().getName());
@@ -46,6 +47,7 @@ public class PlayerInformationActivity extends AppCompatActivity {
         engineerPointsText.setText(String.format("%d", viewModel.getGame().getPlayer().getEngineerPoints()));
         traderPointsText.setText(String.format("%d", viewModel.getGame().getPlayer().getTraderPoints()));
         fighterPointsText.setText(String.format("%d", viewModel.getGame().getPlayer().getFighterPoints()));
+        //
         gameDifficultyText.setText(viewModel.getGame().getDifficultyLevel().toString());
 
     }

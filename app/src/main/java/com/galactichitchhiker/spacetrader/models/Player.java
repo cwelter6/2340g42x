@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Holds player information
+ * Holds player information and all getter and setter methods
  * 
  */
 public class Player {

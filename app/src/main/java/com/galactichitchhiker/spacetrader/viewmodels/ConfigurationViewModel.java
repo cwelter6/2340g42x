@@ -1,16 +1,12 @@
 package com.galactichitchhiker.spacetrader.viewmodels;
 
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.ViewModel;
-import android.support.annotation.NonNull;
-
 import com.galactichitchhiker.spacetrader.models.Game;
 import com.galactichitchhiker.spacetrader.models.Model;
-import com.galactichitchhiker.spacetrader.models.Ship;
 
-import java.util.List;
-
+/*this view model is for the configuration screen. It checks user's input and if valid,
+ * ask the model to setGame() based on the user's input
+ */
 public class ConfigurationViewModel extends ViewModel {
     
     private int MAXIMUM_SKILL_POINTS = 16;
@@ -28,10 +24,11 @@ public class ConfigurationViewModel extends ViewModel {
      */
     public String createModel(String name, int pilotPoints, int engineerPoints, int traderPoints,
                             int fighterPoints, Game.GameDifficulty difficultyLevel) {
-
-
+        //check the validity of inputs before create a model
         int pointSum = pilotPoints + engineerPoints + traderPoints + fighterPoints;
         if (pointSum == MAXIMUM_SKILL_POINTS && name.length() != 0) {
+            //call the setGame() method in Model to start the game
+            //Model.getInstance() refers to the Model
             Model.getInstance().setGame(name, pilotPoints, engineerPoints, traderPoints, fighterPoints, difficultyLevel);
             return "success";
         } else if (name.length() == 0) {

@@ -10,6 +10,9 @@ public class Model {
 
     private Game game;
     private static Model model = new Model();
+    /* create a new model here to allow other classes access model without
+    * having to create one themselves (which breaks the singleton property)
+    */
 
     private int credits;
 
@@ -23,6 +26,9 @@ public class Model {
 
     /**
      * Get Model instance
+     * this getInstance() method allow other class to access the model
+     * while still maintain its singleton property
+     * If want to access data in model, just use Model.getInstance().getXXX()
      *
      * @return model
      */
