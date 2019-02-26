@@ -50,6 +50,7 @@ public class PlayerInformationActivity extends AppCompatActivity {
         //
         gameDifficultyText.setText(viewModel.getGame().getDifficultyLevel().toString());
 
+
     }
 
 }
