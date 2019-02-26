@@ -57,21 +57,25 @@ public class ConfigurationActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, possibleSkillPoints);
         pilotAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         pilotSpinner.setAdapter(pilotAdapter);
+        pilotSpinner.setSelection(3);
 
         ArrayAdapter<Integer> engineerAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, possibleSkillPoints);
         engineerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         engineerSpinner.setAdapter(engineerAdapter);
+        engineerSpinner.setSelection(3);
 
         ArrayAdapter<Integer> traderAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, possibleSkillPoints);
         traderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         traderSpinner.setAdapter(traderAdapter);
+        traderSpinner.setSelection(3);
 
         ArrayAdapter<Integer> fighterAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, possibleSkillPoints);
         fighterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fighterSpinner.setAdapter(fighterAdapter);
+        fighterSpinner.setSelection(3);
 
         //make the spinner for the difficulty level
         ArrayAdapter<Game.GameDifficulty> difficultyAdapter = new ArrayAdapter<>(this,

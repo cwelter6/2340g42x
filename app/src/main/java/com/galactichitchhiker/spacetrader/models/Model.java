@@ -1,6 +1,7 @@
 package com.galactichitchhiker.spacetrader.models;
 
-import java.util.List;
+
+import android.util.Log;
 
 /**
  * Holds game object
@@ -13,9 +14,6 @@ public class Model {
     /* create a new model here to allow other classes access model without
     * having to create one themselves (which breaks the singleton property)
     */
-
-    private int credits;
-
 
     private Model() {
         /*Model here is a singleton here. We want global access to it, 
@@ -35,51 +33,34 @@ public class Model {
     public static Model getInstance() {
         return model;
     }
-    
+
     /**
      * initialize the data
-     * 
-     * @param name            - Player's name
-     * @param pilotPoints     - pilot skill points
-     * @param engineerPoints  - engineer skill points
-     * @param traderPoints    - trader skill points
-     * @param fighterPoints   - fighter skill points
+     *
+     * @param player          - Player object
      * @param difficultyLevel - game difficulty level
      */
-    public void setGame(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints,
-            Game.GameDifficulty difficultyLevel) {
-        game = new Game(name, pilotPoints, engineerPoints, traderPoints, fighterPoints, difficultyLevel);
+    public void setGame(Player player, Game.GameDifficulty difficultyLevel) {
+        game = new Game(player, difficultyLevel);
     }
 
     public Game getGame() {
         return game;
     }
 
-    /**
-     * Give credits to player
-     *
-     * @param add - number of credits to add
-     */
-    public void addCredits(int add) {
-        this.credits += add;
-    }
 
     /**
-     * Take credits from player
-     *
-     * @param subtract - number of credits to subtract
+     * Log output
+     * @param tag
+     * @param content
      */
-    public void subtractCredits(int subtract) {
-        this.credits -= subtract;
-    }
-
-    /**
-     * Get number of player's credits
-     *
-     * @return credits - int
-     */
-    public int getCredits() {
-        return credits;
+    public static void largeLog(String tag, String content) {
+        if (content.length() > 4000) {
+            Log.d(tag, content.substring(0, 4000));
+            largeLog(tag, content.substring(4000));
+        } else {
+            Log.d(tag, content);
+        }
     }
     
 }
