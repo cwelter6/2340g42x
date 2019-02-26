@@ -42,7 +42,7 @@ public class PlayerInformationActivity extends AppCompatActivity {
         //get data from view model instead of from model
         viewModel = ViewModelProviders.of(this).get(PlayerInformationViewModel.class);
 
-        playerNameText.setText(viewModel.getGame().getName());
+        playerNameText.setText(viewModel.getGame().getPlayer().getName());
         pilotPointsText.setText(Integer.toString(viewModel.getGame().getPlayer().getPilotPoints()));
         engineerPointsText.setText(String.format("%d", viewModel.getGame().getPlayer().getEngineerPoints()));
         traderPointsText.setText(String.format("%d", viewModel.getGame().getPlayer().getTraderPoints()));
