@@ -155,11 +155,7 @@ public class Universe {
 
             solarSystems.add(ss);
 
-            System.out.println("\n\nPlanet #" + ( (double) x/X_LENGTH + 1));
-            System.out.println("Name: " + name);
-            System.out.println("Location: ( " + x + ", " + y + " )");
-            System.out.println("Tech Level: " + ss.getTechLevel().name());
-            System.out.println("Resources: " + ss.getResources().name());
+            Model.largeLog("INFO", ss + "");
 
         }
 

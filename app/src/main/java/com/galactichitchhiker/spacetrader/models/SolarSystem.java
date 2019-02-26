@@ -131,4 +131,17 @@ public class SolarSystem {
         return resources;
     }
 
+
+    public String toString(){
+
+        String s = "Planet\n";
+        s += "Name: " + name + "\n";
+        s += "Location: (" + x + ", " + y + ")" + "\n";
+        s += "Tech Level: " + getTechLevel().name() + "\n";
+        s += "Resources: " + getResources().name() + "\n";
+
+        return s;
+
+    }
+
 }
