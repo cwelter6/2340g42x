@@ -1,6 +1,6 @@
 package com.galactichitchhiker.spacetrader.models;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Holds game object
@@ -9,24 +9,35 @@ import java.util.ArrayList;
 public class Model {
 
     private Game game;
-    private static Model model;
-
-    private String name;
-    private int pilotPoints;
-    private int engineerPoints;
-    private int traderPoints;
-    private int fighterPoints;
-    private Game.GameDifficulty difficultyLevel;
-
+    private static Model model = new Model();
+    /* create a new model here to allow other classes access model without
+    * having to create one themselves (which breaks the singleton property)
+    */
 
     private int credits;
-    private int MAXIMUM_SKILL_POINTS = 16;
 
-    private Ship currentShip;
-    private ArrayList<Ship> ownedShips;
+
+    private Model() {
+        /*Model here is a singleton here. We want global access to it, 
+        but we also want this class to be the only one that could create it. 
+        That is why we are making the constructor private, then have a getInstance()
+        method to access it*/
+    }
 
     /**
-     * Constructs a model object
+     * Get Model instance
+     * this getInstance() method allow other class to access the model
+     * while still maintain its singleton property
+     * If want to access data in model, just use Model.getInstance().getXXX()
+     *
+     * @return model
+     */
+    public static Model getInstance() {
+        return model;
+    }
+    
+    /**
+     * initialize the data
      * 
      * @param name            - Player's name
      * @param pilotPoints     - pilot skill points
@@ -35,134 +46,13 @@ public class Model {
      * @param fighterPoints   - fighter skill points
      * @param difficultyLevel - game difficulty level
      */
-    public Model(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints,
+    public void setGame(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints,
             Game.GameDifficulty difficultyLevel) {
-        this.name = name;
-        this.pilotPoints = pilotPoints;
-        this.engineerPoints = engineerPoints;
-        this.traderPoints = traderPoints;
-        this.fighterPoints = fighterPoints;
-
         game = new Game(name, pilotPoints, engineerPoints, traderPoints, fighterPoints, difficultyLevel);
-
-        model = this;
     }
 
-    /**
-     * Get Model instance
-     * 
-     * @return model
-     */
-    public static Model getInstance() {
-        return model;
-    }
-
-    /**
-     * Get player's name
-     *
-     * @return String
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Set player's name
-     *
-     * @param name Player's name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Get pilot skill points
-     *
-     * @return int
-     */
-    public int getPilotPoints() {
-        return pilotPoints;
-    }
-
-    /**
-     * Get engineer skill points
-     *
-     * @return int
-     */
-    public int getEngineerPoints() {
-        return engineerPoints;
-    }
-
-    /**
-     * Get trader skill points
-     *
-     * @return int
-     */
-    public int getTraderPoints() {
-        return traderPoints;
-    }
-
-    /**
-     * Get fighter skill points
-     *
-     * @return int
-     */
-    public int getFighterPoints() {
-        return fighterPoints;
-    }
-
-    /**
-     * Set pilot skill points
-     *
-     * @param pilotPoints pilotPoints
-     */
-    public void setPilotPoints(int pilotPoints) {
-        this.pilotPoints = pilotPoints;
-    }
-
-    /**
-     * Set engineer skill points
-     *
-     * @param engineerPoints engineerPoints
-     */
-    public void setEngineerPoints(int engineerPoints) {
-        this.engineerPoints = engineerPoints;
-    }
-
-    /**
-     * Set trader skill points
-     *
-     * @param traderPoints traderPoints
-     */
-    public void setTraderPoints(int traderPoints) {
-        this.traderPoints = traderPoints;
-    }
-
-    /**
-     * Set fighter skill points
-     *
-     * @param fighterPoints fighterPoints
-     */
-    public void setFighterPoints(int fighterPoints) {
-        this.fighterPoints = fighterPoints;
-    }
-
-    /**
-     * Get maximum sum of skill points for player
-     *
-     * @return int
-     */
-    public int getMaximumSkillPoints() {
-        return MAXIMUM_SKILL_POINTS;
-    }
-
-    /**
-     * Get game difficulty
-     *
-     * @return GameDifficulty
-     */
-    public Game.GameDifficulty getDifficultyLevel() {
-        return game.getDifficultyLevel();
+    public Game getGame() {
+        return game;
     }
 
     /**
@@ -191,41 +81,5 @@ public class Model {
     public int getCredits() {
         return credits;
     }
-
-    /**
-     * Get player's current ship
-     *
-     * @return Ship
-     */
-    public Ship getCurrentShip() {
-        return currentShip;
-    }
-
-    /**
-     * Set player's current ship
-     *
-     * @param ship ship
-     */
-    public void setCurrentShip(Ship ship) {
-        this.currentShip = ship;
-    }
-
-    /**
-     * Get list of all player's owned ships
-     *
-     * @return ArrayList<Ship>
-     */
-    public ArrayList<Ship> getOwnedShips() {
-        return ownedShips;
-    }
-
-    /**
-     * Add ship to player's list of ships
-     *
-     * @param ship ship
-     */
-    public void addShip(Ship ship) {
-        ownedShips.add(ship);
-    }
-
+    
 }

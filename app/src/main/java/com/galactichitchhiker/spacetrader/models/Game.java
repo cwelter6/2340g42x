@@ -1,27 +1,21 @@
 package com.galactichitchhiker.spacetrader.models;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Holds current game and player object
+ * Holds current player object and all other information needed to set up a game
  * 
  */
 public class Game {
     
     private Player player;
 
-    private String name;
-    private int pilotPoints;
-    private int engineerPoints;
-    private int traderPoints;
-    private int fighterPoints;
-
-
     private int credits;
     private int MAXIMUM_SKILL_POINTS = 16;
 
     private Ship currentShip;
-    private ArrayList<Ship> ownedShips;
+    private List<Ship> ownedShips;
+    //highly doubt if we should put variables and getters/setters relate to ship in this class
 
     /**
      * Constructs a new game object
@@ -34,15 +28,8 @@ public class Game {
      * @param difficultyLevel - game difficulty level
      */
     public Game(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints, GameDifficulty difficultyLevel){
-        this.name = name;
-        this.pilotPoints = pilotPoints;
-        this.engineerPoints = engineerPoints;
-        this.traderPoints = traderPoints;
-        this.fighterPoints = fighterPoints;
-
         this.difficultyLevel = difficultyLevel;
         player = new Player(name, pilotPoints, engineerPoints, traderPoints, fighterPoints);
-
     }
 
     /**
@@ -78,16 +65,7 @@ public class Game {
      * @return String
      */
     public String getName() {
-        return name;
-    }
-
-    /**
-     * Set player's name
-     *
-     * @param name Player's name
-     */
-    public void setName(String name) {
-        this.name = name;
+        return player.getName();
     }
 
     /**
@@ -96,7 +74,7 @@ public class Game {
      * @return int
      */
     public int getPilotPoints() {
-        return pilotPoints;
+        return player.getPilotPoints();
     }
 
     /**
@@ -105,7 +83,7 @@ public class Game {
      * @return int
      */
     public int getEngineerPoints() {
-        return engineerPoints;
+        return player.getEngineerPoints();
     }
 
     /**
@@ -114,7 +92,7 @@ public class Game {
      * @return int
      */
     public int getTraderPoints() {
-        return traderPoints;
+        return player.getTraderPoints();
     }
 
     /**
@@ -123,43 +101,7 @@ public class Game {
      * @return int
      */
     public int getFighterPoints() {
-        return fighterPoints;
-    }
-
-    /**
-     * Set pilot skill points
-     *
-     * @param pilotPoints pilotPoints
-     */
-    public void setPilotPoints(int pilotPoints) {
-        this.pilotPoints = pilotPoints;
-    }
-
-    /**
-     * Set engineer skill points
-     *
-     * @param engineerPoints engineerPoints
-     */
-    public void setEngineerPoints(int engineerPoints) {
-        this.engineerPoints = engineerPoints;
-    }
-
-    /**
-     * Set trader skill points
-     *
-     * @param traderPoints traderPoints
-     */
-    public void setTraderPoints(int traderPoints) {
-        this.traderPoints = traderPoints;
-    }
-
-    /**
-     * Set fighter skill points
-     *
-     * @param fighterPoints fighterPoints
-     */
-    public void setFighterPoints(int fighterPoints) {
-        this.fighterPoints = fighterPoints;
+        return player.getFighterPoints();
     }
 
     /**
@@ -219,9 +161,9 @@ public class Game {
     /**
      * Get list of all player's owned ships
      *
-     * @return ArrayList<Ship>
+     * @return List<Ship>
      */
-    public ArrayList<Ship> getOwnedShips() {
+    public List<Ship> getOwnedShips() {
         return ownedShips;
     }
 

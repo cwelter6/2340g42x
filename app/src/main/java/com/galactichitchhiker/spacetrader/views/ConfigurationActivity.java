@@ -114,12 +114,11 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         Log.d("Edit", "ViewModel Report: " + report);
 
-        if (report != "success") {
+        if (!(report.equals("success"))) {
             Toast.makeText(ConfigurationActivity.this, report, Toast.LENGTH_LONG).show();
         } else {
             Log.d("Edit", "Before creating intent");
-            Intent intent = new Intent(ConfigurationActivity.this,
-                    PlayerInformationActivity.class);
+            Intent intent = new Intent(ConfigurationActivity.this, PlayerInformationActivity.class);
             Log.d("Edit", "Created intent");
             startActivity(intent);
             Log.d("Edit", "Start activity");
