@@ -47,7 +47,7 @@ public enum TradeGoods {
     }
 
     public boolean canSellAt(int techLevel) {
-        return MTLU > techLevel;
+        return MTLU < techLevel;
     }
 
     public int getPrice(int TechLevel) {
