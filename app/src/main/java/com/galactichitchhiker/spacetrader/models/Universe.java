@@ -15,6 +15,7 @@ public class Universe {
 
     private final int X_LENGTH = 150;
     private final int Y_LENGTH = 100;
+    private final int NUM_OF_PLANETS = 10;
 
     private List<String> names = new ArrayList<String>(Arrays.asList("Acamar",
             "Adahn",		// The alternate personality for The Nameless One in "Planescape: Torment"
@@ -146,7 +147,7 @@ public class Universe {
         // Create 10 random solar systems
         solarSystems = new HashSet<>();
 
-        for(int x = 0; x < X_LENGTH; x += X_LENGTH/10) {
+        for(int x = 0; x < X_LENGTH; x += X_LENGTH/NUM_OF_PLANETS) {
 
             String name = names.remove((int) (Math.random()*names.size()));
             int y = (int) (Math.random()*Y_LENGTH);
@@ -156,9 +157,14 @@ public class Universe {
             solarSystems.add(ss);
 
             Model.largeLog("INFO", ss + "");
-
+            System.out.println(ss);
         }
 
+    }
+
+
+    public SolarSystem getSolarSystemByIndex(int i) {
+        return (SolarSystem) solarSystems.toArray()[0];
     }
 
 }

@@ -22,6 +22,8 @@ public class Game {
         player = p;
 
         universe = new Universe();
+
+        p.setCurrentSolarSystem(universe.getSolarSystemByIndex(0));
     }
 
     /**

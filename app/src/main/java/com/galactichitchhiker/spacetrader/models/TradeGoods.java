@@ -13,19 +13,19 @@ public enum TradeGoods {
     ROBOTS(6, 4, 7, 5000, -150, 100, "LACKOFWORKERS", "Never",	"Never", 3500, 5000);
 
 
-    private int MTLP;
-    private int MTLU;
-    private int TTP;
+    private int MTLP; //Minimum Tech Level to produce
+    private int MTLU; //Minimum Tech Level to use
+    private int TTP; //Tech Level which produces most of this item
     private int basePrice;
-    private int IPL;
-    private int Var;
-    private String IE;
-    private String CR;
-    private String ER;
-    private int MTL;
-    private int MTH;
+    private int IPL; //Price increase per tech level
+    private int Var; //Maximum percentage that the price can vary above or below the base
+    private String IE; //Radical price increase event
+    private String CR; //Cheap price condition
+    private String ER; //Expensive price condition
+    private int MTL; //Minimum price offered in space trade with random trader
+    private int MTH; //Maximum price offered in space trade with random trader
 
-    TradeGoods(int MTLP, int MTLU, int TTP, int basePrice	, int IPL,
+    TradeGoods(int MTLP, int MTLU, int TTP, int basePrice, int IPL,
                int	Var, String IE, String CR, String ER, int MTL, int MTH) {
 
         this.MTLP = MTLP;
@@ -41,17 +41,36 @@ public enum TradeGoods {
         this.MTH = MTH;
     }
 
+    /**
+     * Determine whether a given planet can buy a resource
+     *
+     * @param techLevel - Tech level of planet
+     * @returns boolean - whether planet can buy this good
+     */
     public boolean canBuyAt(int techLevel) {
         return MTLP > techLevel;
 
     }
 
+
+    /**
+     * Determine whether a given planet can sell a resource
+     *
+     * @param techLevel - Tech level of planet
+     * @returns boolean - whether planet can sell this good
+     */
     public boolean canSellAt(int techLevel) {
         return MTLU < techLevel;
     }
 
-    public int getPrice(int TechLevel) {
-        return basePrice + (IPL * (TechLevel - MTLP)) + ((int)Math.random() * 4);
 
+    /**
+     *  Calculate price of resource using plane's techlevel
+     *
+     * @param techLevel - Tech level of planet
+     * @returns int - price of good
+     */
+    public int getPrice(int TechLevel) {
+        return basePrice + (IPL * (TechLevel - MTLP)) + (basePrice* ((int)Math.random() * Var));
     }
 }
