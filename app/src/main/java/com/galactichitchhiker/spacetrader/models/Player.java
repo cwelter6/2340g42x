@@ -22,6 +22,8 @@ public class Player {
     private Ship currentShip;
     private List<Ship> ownedShips;
 
+    private SolarSystem currentSolarSystem;
+
     /**
      * Creates a player object
      *
@@ -208,6 +210,26 @@ public class Player {
      */
     public void addShip(Ship ship) {
         ownedShips.add(ship);
+    }
+
+
+
+    /**
+     * Get player's current solar system
+     *
+     * @return SolarSystem
+     */
+    public SolarSystem getCurrentSolarSystem() {
+        return currentSolarSystem;
+    }
+
+    /**
+     * Set player's current solar system
+     *
+     * @param SolarSystem s
+     */
+    public void setCurrentSolarSystem(SolarSystem s) {
+        this.currentSolarSystem = s;
     }
 
 }

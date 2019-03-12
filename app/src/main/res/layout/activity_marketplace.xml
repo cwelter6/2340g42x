@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.MarketplaceActivity">
+
+    <TextView
+        android:id="@+id/market_info"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:text="Balance: Cargo Space:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/market_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:text="Market"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/market_info" />
+
+    <TextView
+        android:id="@+id/water_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Water"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/market_text" />
+
+    <TextView
+        android:id="@+id/water_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="$0"
+        app:layout_constraintStart_toEndOf="@+id/water_text"
+        app:layout_constraintTop_toBottomOf="@+id/market_text" />
+
+    <Button
+        android:id="@+id/water_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
+        android:text="Buy"
+        app:layout_constraintStart_toEndOf="@+id/water_count"
+        app:layout_constraintTop_toBottomOf="@+id/market_text" />
+
+    <TextView
+        android:id="@+id/furs_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="Furs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/water_text" />
+
+    <TextView
+        android:id="@+id/furs_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="$0"
+        app:layout_constraintStart_toEndOf="@+id/furs_text"
+        app:layout_constraintTop_toBottomOf="@+id/water_cost" />
+
+    <Button
+        android:id="@+id/furs_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:text="Buy"
+        app:layout_constraintStart_toEndOf="@+id/furs_count"
+        app:layout_constraintTop_toBottomOf="@+id/water_buy" />
+
+    <Button
+        android:id="@+id/water_sell"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="Sell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/water_buy"
+        app:layout_constraintTop_toBottomOf="@+id/market_text" />
+
+    <Button
+        android:id="@+id/furs_sell"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Sell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/furs_buy"
+        app:layout_constraintTop_toBottomOf="@+id/water_sell" />
+
+    <TextView
+        android:id="@+id/water_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/water_cost"
+        app:layout_constraintTop_toBottomOf="@+id/market_text" />
+
+    <TextView
+        android:id="@+id/furs_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/furs_cost"
+        app:layout_constraintTop_toBottomOf="@+id/water_count" />
+
+</android.support.constraint.ConstraintLayout>
