@@ -7,6 +7,7 @@ package com.galactichitchhiker.spacetrader.models;
 public class Ship {
 
     private ShipType type;
+    private int fuel;
 
     /**
      * constructor of Ship
@@ -15,4 +16,11 @@ public class Ship {
         type = ShipType.GNAT;
     }
 
+    public void addFuel(int fuel) {
+        this.fuel = fuel;
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
 }
