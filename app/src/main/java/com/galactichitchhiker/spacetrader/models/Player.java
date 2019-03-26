@@ -226,10 +226,27 @@ public class Player {
     /**
      * Set player's current solar system
      *
-     * @param SolarSystem s
+     * @param s player's new solar system
      */
     public void setCurrentSolarSystem(SolarSystem s) {
         this.currentSolarSystem = s;
+    }
+
+    /**
+     * Moves the player to another solar system
+     *
+     * @param s solar system to travel to
+     * @return message summarizing the travel
+     */
+    public String travel(SolarSystem s) {
+        try {
+            String travelInfo = currentShip.travel(currentSolarSystem.getX(), currentSolarSystem.getY(),
+                    s.getX(), s.getY());
+            setCurrentSolarSystem(s);
+            return travelInfo;
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
     }
 
 }
