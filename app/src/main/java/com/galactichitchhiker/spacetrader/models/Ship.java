@@ -12,6 +12,7 @@ import java.util.Set;
 public class Ship {
 
     private ShipType type;
+    private int fuel;
 
     private int maxCargoSpace;
     private int usedCargoSpace;
@@ -129,6 +130,13 @@ public class Ship {
         return maxCargoSpace;
     }
 
+    public void addFuel(int fuel) {
+        this.fuel = fuel;
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
     public int getRemainingCargoSpace(){
         return maxCargoSpace - usedCargoSpace;
     }
