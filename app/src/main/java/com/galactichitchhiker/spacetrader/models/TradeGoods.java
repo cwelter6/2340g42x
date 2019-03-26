@@ -42,25 +42,25 @@ public enum TradeGoods {
     }
 
     /**
-     * Determine whether a given planet can buy a resource
+     * Determine whether player can buy at a certain tech level
      *
      * @param techLevel - Tech level of planet
-     * @returns boolean - whether planet can buy this good
+     * @returns boolean - whether player can buy this good
      */
     public boolean canBuyAt(int techLevel) {
-        return MTLP > techLevel;
+        return techLevel >= MTLP;
 
     }
 
 
     /**
-     * Determine whether a given planet can sell a resource
+     * Determine whether a player can sell at a given tech level
      *
      * @param techLevel - Tech level of planet
-     * @returns boolean - whether planet can sell this good
+     * @returns boolean - whether player can sell this good
      */
     public boolean canSellAt(int techLevel) {
-        return MTLU < techLevel;
+        return techLevel >= MTLU;
     }
 
 

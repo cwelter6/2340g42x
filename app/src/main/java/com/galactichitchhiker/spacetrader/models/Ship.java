@@ -9,6 +9,7 @@ import java.util.EnumMap;
 public class Ship {
 
     private ShipType type;
+    private int fuel;
 
     private int maxCargoSpace = 100;
     private int usedCargoSpace = 0;
@@ -64,6 +65,13 @@ public class Ship {
         return maxCargoSpace;
     }
 
+    public void addFuel(int fuel) {
+        this.fuel = fuel;
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
     public int getRemainingCargoSpace(){
         return maxCargoSpace - usedCargoSpace;
     }
