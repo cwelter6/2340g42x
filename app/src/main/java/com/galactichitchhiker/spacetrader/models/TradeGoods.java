@@ -70,7 +70,7 @@ public enum TradeGoods {
      * @param techLevel - Tech level of planet
      * @returns int - price of good
      */
-    public int getPrice(int TechLevel) {
-        return basePrice + (IPL * (TechLevel - MTLP)) + (basePrice* ((int)Math.random() * Var));
+    public int getPrice(int techLevel) {
+        return basePrice + (IPL * (techLevel - MTLP)) + (basePrice* ((int)Math.random() * Var));
     }
 }
