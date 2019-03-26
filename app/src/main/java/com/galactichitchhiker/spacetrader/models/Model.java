@@ -3,6 +3,8 @@ package com.galactichitchhiker.spacetrader.models;
 
 import android.util.Log;
 
+import java.util.Set;
+
 /**
  * Holds game object
  * 
@@ -46,6 +48,10 @@ public class Model {
 
     public Game getGame() {
         return game;
+    }
+
+    public Set<SolarSystem> getSolarSystems() {
+        return game.getSolarSystems();
     }
 
 
