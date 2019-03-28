@@ -1,10 +1,13 @@
 package com.galactichitchhiker.spacetrader.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
 
 import com.galactichitchhiker.spacetrader.models.Game;
 import com.galactichitchhiker.spacetrader.models.Model;
 import com.galactichitchhiker.spacetrader.models.SolarSystem;
+
+import java.io.File;
 
 
 public class ControlCenterViewModel extends ViewModel {
@@ -34,4 +37,9 @@ public class ControlCenterViewModel extends ViewModel {
     public double getMaxFuel() {
         return model.getGame().getPlayer().getCurrentShip().getFuelCapacity();
     }
+
+    public boolean saveGame(Context context) {
+        return model.saveGame(context);
+    }
+
 }

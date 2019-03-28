@@ -1,5 +1,6 @@
 package com.galactichitchhiker.spacetrader.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,6 +51,17 @@ public class ControlCenterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ControlCenterActivity.this, MarketplaceActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        //save button
+        Button saveButton = findViewById(R.id.save_button);
+        final Context context = this;
+
+        marketButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.saveGame(context);
             }
         });
     }
