@@ -9,7 +9,6 @@ public class Game {
     
     private Player player;
     private Universe universe;
-    private GameDifficulty difficultyLevel = GameDifficulty.NORMAL;
 
 
     /**
@@ -23,12 +22,14 @@ public class Game {
         player = p;
 
         universe = new Universe();
+
+        p.setCurrentSolarSystem(universe.getSolarSystemByIndex(0));
     }
 
     /**
      * Enum for game difficulty level
      */
-    private enum GameDifficulty {
+    public enum GameDifficulty {
         EASY, NORMAL, HARD, DIFFICULT
     }
 
@@ -50,6 +51,7 @@ public class Game {
         return difficultyLevel;
     }
 
+    private GameDifficulty difficultyLevel = GameDifficulty.NORMAL;
 
 
 }
