@@ -3,6 +3,7 @@ package com.galactichitchhiker.spacetrader.models;
 import java.util.List;
 import java.util.function.IntPredicate;
 import java.util.ArrayList;
+import java.lang.Math;
 
 /**
  * Holds player information and all getter and setter methods
@@ -249,6 +250,15 @@ public class Player {
         if (canTravelTo(s)) {
             currentShip.subtractFuel(distanceTo(s.getX(), s.getY())/10);
             setCurrentSolarSystem(s);
+
+
+            if (Math.random()*100 < 20) {
+
+                credits += 100;
+                return "Traveled to " + s.getName() + " and found 100 credits!";
+
+            }
+
 
             return "Traveled to " + s.getName();
         } else {
