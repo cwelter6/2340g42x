@@ -1,6 +1,8 @@
 package com.galactichitchhiker.spacetrader.models;
 
 
+import java.util.Set;
+
 /**
  * Holds current player object and all other information needed to set up a game
  * 
@@ -22,6 +24,8 @@ public class Game {
         player = p;
 
         universe = new Universe();
+
+        p.setCurrentSolarSystem(universe.getSolarSystemByIndex(0));
     }
 
     /**
@@ -47,6 +51,10 @@ public class Game {
      */
     public GameDifficulty getDifficultyLevel() {
         return difficultyLevel;
+    }
+
+    public Set<SolarSystem> getSolarSystems() {
+        return universe.getSolarSystems();
     }
 
     private GameDifficulty difficultyLevel = GameDifficulty.NORMAL;
