@@ -1,6 +1,7 @@
 package com.galactichitchhiker.spacetrader.models;
 
 import java.util.List;
+import java.util.function.IntPredicate;
 import java.util.ArrayList;
 
 /**
@@ -212,8 +213,6 @@ public class Player {
         ownedShips.add(ship);
     }
 
-
-
     /**
      * Get player's current solar system
      *
@@ -226,10 +225,45 @@ public class Player {
     /**
      * Set player's current solar system
      *
-     * @param SolarSystem s
+     * @param s player's new solar system
      */
     public void setCurrentSolarSystem(SolarSystem s) {
         this.currentSolarSystem = s;
+    }
+
+    public int getX() {
+        return currentSolarSystem.getX();
+    }
+
+    public int getY() {
+        return currentSolarSystem.getY();
+    }
+
+    /**
+     * Moves the player to another solar system
+     *
+     * @param s solar system to travel to
+     * @return message summarizing the travel
+     */
+    public String travel(SolarSystem s) {
+        if (canTravelTo(s)) {
+            currentShip.subtractFuel(distanceTo(s.getX(), s.getY())/10);
+            setCurrentSolarSystem(s);
+
+            return "Traveled to " + s.getName();
+        } else {
+            return "Not enough fuel!";
+        }
+    }
+
+    public boolean canTravelTo(SolarSystem s) {
+        return currentShip.getFuel() >= distanceTo(s.getX(), s.getY())/10;
+    }
+
+    private double distanceTo(int finalX, int finalY) {
+        int distanceX = finalX - getX();
+        int distanceY = finalY - getY();
+        return Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
     }
 
 }
