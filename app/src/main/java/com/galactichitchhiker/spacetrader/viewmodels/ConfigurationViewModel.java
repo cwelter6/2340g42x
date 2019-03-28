@@ -1,6 +1,8 @@
 package com.galactichitchhiker.spacetrader.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
+
 import com.galactichitchhiker.spacetrader.models.*;
 
 /*this view model is for the configuration screen. It checks user's input and if valid,
@@ -9,6 +11,8 @@ import com.galactichitchhiker.spacetrader.models.*;
 public class ConfigurationViewModel extends ViewModel {
     
     private int MAXIMUM_SKILL_POINTS = 16;
+
+    private Model model = Model.getInstance();
 
     /**
      * create a Model
@@ -28,7 +32,7 @@ public class ConfigurationViewModel extends ViewModel {
         if (pointSum == MAXIMUM_SKILL_POINTS && name.length() != 0) {
             //call the setGame() method in Model to start the game
             //Model.getInstance() refers to the Model
-            Model.getInstance().setGame(new Player(name, pilotPoints, engineerPoints, traderPoints, fighterPoints), difficultyLevel);
+            model.setGame(new Player(name, pilotPoints, engineerPoints, traderPoints, fighterPoints), difficultyLevel);
             return "success";
         } else if (name.length() == 0) {
             return "Error: The name of the player can not be empty";
@@ -37,4 +41,10 @@ public class ConfigurationViewModel extends ViewModel {
         }
         return "An error occured...";
     }
+
+
+    public boolean loadGame(Context context) {
+        return Model.loadGame(context);
+    }
+
 }

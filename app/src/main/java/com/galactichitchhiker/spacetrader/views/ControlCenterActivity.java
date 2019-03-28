@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.galactichitchhiker.spacetrader.R;
 import com.galactichitchhiker.spacetrader.viewmodels.ControlCenterViewModel;
@@ -58,10 +59,14 @@ public class ControlCenterActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.save_button);
         final Context context = this;
 
-        marketButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.saveGame(context);
+                if (viewModel.saveGame(context)) {
+                    Toast.makeText(context, "Saved game!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Failed to save game", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
