@@ -30,7 +30,7 @@ public class MarketplaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_marketplace);
 
 
-        LinearLayout itemList = (LinearLayout) findViewById(R.id.item_list);
+        LinearLayout itemList = findViewById(R.id.item_list);
 
         LinearLayout itemView;
 
@@ -113,7 +113,7 @@ public class MarketplaceActivity extends AppCompatActivity {
         }
 
 
-        marketInfo = (TextView) findViewById(R.id.market_info);
+        marketInfo = findViewById(R.id.market_info);
         updateMarketInfo();
 
     }

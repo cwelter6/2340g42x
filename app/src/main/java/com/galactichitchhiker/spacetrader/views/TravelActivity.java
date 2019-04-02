@@ -2,8 +2,8 @@ package com.galactichitchhiker.spacetrader.views;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,10 +12,8 @@ import android.widget.Toast;
 
 import com.galactichitchhiker.spacetrader.R;
 import com.galactichitchhiker.spacetrader.models.SolarSystem;
-import com.galactichitchhiker.spacetrader.models.TradeGoods;
 import com.galactichitchhiker.spacetrader.viewmodels.TravelViewModel;
 
-import java.util.EnumMap;
 import java.util.List;
 
 public class TravelActivity extends AppCompatActivity {
@@ -27,7 +25,7 @@ public class TravelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
-        LinearLayout itemList = (LinearLayout) findViewById(R.id.planet_list);
+        LinearLayout itemList = findViewById(R.id.planet_list);
 
         LinearLayout itemView;
 
