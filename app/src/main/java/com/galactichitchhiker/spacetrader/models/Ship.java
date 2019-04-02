@@ -1,10 +1,6 @@
 package com.galactichitchhiker.spacetrader.models;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Holds ship information
@@ -23,9 +19,9 @@ public class Ship {
 
     /**
      * constructor of Ship
+     * @param type type of the Ship created
      */
-    public Ship() {
-        type = ShipType.GNAT;
+    public Ship(ShipType type) {
         maxCargoSpace = type.getCargoCapacity();
         fuelCapacity = type.getFuelCapacity();
         fuel = fuelCapacity;
@@ -36,6 +32,13 @@ public class Ship {
         for (TradeGoods g : TradeGoods.values()) {
             cargo.put(g, 0);
         }
+    }
+
+    /**
+     * constructor of Ship that defaults to a GNAT type
+     */
+    public Ship() {
+        this(ShipType.GNAT);
     }
 
 
