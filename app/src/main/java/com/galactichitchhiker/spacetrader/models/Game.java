@@ -11,6 +11,7 @@ public class Game {
     
     private Player player;
     private Universe universe;
+    private GameDifficulty difficultyLevel;
 
 
     /**
@@ -53,11 +54,15 @@ public class Game {
         return difficultyLevel;
     }
 
+
+    /**
+     * Get solar systems
+     *
+     * @return Set<SolarSystem> - set of solar systems
+     */
     public Set<SolarSystem> getSolarSystems() {
         return universe.getSolarSystems();
     }
-
-    private GameDifficulty difficultyLevel = GameDifficulty.NORMAL;
 
 
 }
