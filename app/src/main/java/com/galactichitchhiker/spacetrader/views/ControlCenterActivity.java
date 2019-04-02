@@ -1,11 +1,13 @@
 package com.galactichitchhiker.spacetrader.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.galactichitchhiker.spacetrader.R;
 import com.galactichitchhiker.spacetrader.viewmodels.ControlCenterViewModel;
@@ -50,6 +52,21 @@ public class ControlCenterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ControlCenterActivity.this, MarketplaceActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        //save button
+        Button saveButton = findViewById(R.id.save_button);
+        final Context context = this;
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (viewModel.saveGame(context)) {
+                    Toast.makeText(context, "Saved game!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Failed to save game", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

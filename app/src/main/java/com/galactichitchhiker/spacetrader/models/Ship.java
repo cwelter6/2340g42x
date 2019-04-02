@@ -2,6 +2,7 @@ package com.galactichitchhiker.spacetrader.models;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ public class Ship {
     private double fuel;
     private double fuelCapacity;
 
-    private EnumMap<TradeGoods, Integer> cargo; //Holds number of each tradegood in Ships' cargo
+    private HashMap<TradeGoods, Integer> cargo; //Holds number of each tradegood in Ships' cargo
 
     /**
      * constructor of Ship
@@ -30,7 +31,7 @@ public class Ship {
         fuel = fuelCapacity;
         usedCargoSpace = 0;
 
-        cargo = new EnumMap<TradeGoods, Integer>(TradeGoods.class);
+        cargo = new HashMap<TradeGoods, Integer>();
 
         for (TradeGoods g : TradeGoods.values()) {
             cargo.put(g, 0);
