@@ -3,7 +3,6 @@ package com.galactichitchhiker.spacetrader.models;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -16,22 +15,18 @@ import java.io.OutputStreamWriter;
 import java.util.Set;
 
 /**
- * Holds game object
+ * Holds game object and loads and saves to file
  * 
  */
 public class Model {
 
     private Game game;
     private static Model model = new Model();
-    /* create a new model here to allow other classes access model without
-    * having to create one themselves (which breaks the singleton property)
-    */
 
+    /**
+     * Singleton constructor
+     */
     private Model() {
-        /*Model here is a singleton here. We want global access to it, 
-        but we also want this class to be the only one that could create it. 
-        That is why we are making the constructor private, then have a getInstance()
-        method to access it*/
     }
 
     /**
@@ -47,7 +42,7 @@ public class Model {
     }
 
     /**
-     * initialize the data
+     * Initialize the game
      *
      * @param player          - Player object
      * @param difficultyLevel - game difficulty level
@@ -56,10 +51,21 @@ public class Model {
         game = new Game(player, difficultyLevel);
     }
 
+    /**
+     * Get game object
+     *
+     * @return Game
+     */
     public Game getGame() {
         return game;
     }
 
+
+    /**
+     * Get set of solar systems
+     *
+     * @return Set<SolarSystem>
+     */
     public Set<SolarSystem> getSolarSystems() {
         return game.getSolarSystems();
     }
@@ -67,6 +73,7 @@ public class Model {
 
     /**
      * Log output
+     *
      * @param tag
      * @param content
      */
@@ -79,6 +86,12 @@ public class Model {
         }
     }
 
+    /**
+     * Load game object from file
+     *
+     * @param context
+     * @return boolean - whether game was loaded
+     */
     public static boolean loadGame(Context context) {
 
         Gson gson = new Gson();
@@ -118,6 +131,12 @@ public class Model {
 
     }
 
+    /**
+     * Save game object to file
+     *
+     * @param context
+     * @return boolean - whether game was saved
+     */
     public static boolean saveGame(Context context) {
         try {
 

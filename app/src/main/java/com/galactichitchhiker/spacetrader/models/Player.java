@@ -190,7 +190,7 @@ public class Player {
     /**
      * Set player's current ship
      *
-     * @param ship ship
+     * @param ship
      */
     public void setCurrentShip(Ship ship) {
         this.currentShip = ship;
@@ -208,7 +208,7 @@ public class Player {
     /**
      * Add ship to player's list of ships
      *
-     * @param ship ship
+     * @param ship
      */
     public void addShip(Ship ship) {
         ownedShips.add(ship);
@@ -232,10 +232,20 @@ public class Player {
         this.currentSolarSystem = s;
     }
 
+    /**
+     * Get player's x coordinate
+     *
+     * @return int
+     */
     public int getX() {
         return currentSolarSystem.getX();
     }
 
+    /**
+     * Get player's y coordinate
+     *
+     * @return int
+     */
     public int getY() {
         return currentSolarSystem.getY();
     }
@@ -243,8 +253,8 @@ public class Player {
     /**
      * Moves the player to another solar system
      *
-     * @param s solar system to travel to
-     * @return message summarizing the travel
+     * @param s - solar system to travel to
+     * @return String - message summarizing the travel
      */
     public String travel(SolarSystem s) {
         if (canTravelTo(s)) {
@@ -266,10 +276,24 @@ public class Player {
         }
     }
 
+    /**
+     * Determine if player has enough fuel to travel to a solar system
+     *
+     * @param s - solar system
+     * @return boolean - whether the player can travel to the solar system
+     */
     public boolean canTravelTo(SolarSystem s) {
         return currentShip.getFuel() >= distanceTo(s.getX(), s.getY())/10;
     }
 
+
+    /**
+     * Calculate the distance from the player to a certain coordinate
+     *
+     * @param finalX - x coord of destination
+     * @param finalY - y coord of destination
+     * @return double - distance to destination
+     */
     private double distanceTo(int finalX, int finalY) {
         int distanceX = finalX - getX();
         int distanceY = finalY - getY();
