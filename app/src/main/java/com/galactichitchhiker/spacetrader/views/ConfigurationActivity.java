@@ -1,6 +1,7 @@
 package com.galactichitchhiker.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -91,6 +92,22 @@ public class ConfigurationActivity extends AppCompatActivity {
                 onStartPressed(view);
             }
         });
+
+        final Context context = this;
+
+        Button loadButton = findViewById(R.id.load_button);
+        loadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (viewModel.loadGame(context)) {
+                    Intent intent = new Intent(ConfigurationActivity.this, PlayerInformationActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(context, "Could not load game!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
     }
 
     public void onStartPressed(View view) {
