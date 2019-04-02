@@ -144,7 +144,8 @@ public class Model {
 
             String game = gson.toJson(model);
 
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("savegame.json", Context.MODE_PRIVATE));
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
+                    context.openFileOutput("savegame.json", Context.MODE_PRIVATE));
             outputStreamWriter.write(game);
             outputStreamWriter.close();
 

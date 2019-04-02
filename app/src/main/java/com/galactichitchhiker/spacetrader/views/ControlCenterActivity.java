@@ -26,7 +26,8 @@ public class ControlCenterActivity extends AppCompatActivity {
         TextView infoView = findViewById(R.id.current_info);
 
         String info = "Current Planet: " + viewModel.getCurrentSolarSystem().getName();
-        info += "\nCurrent Location: (" + viewModel.getPlayerX() + ", " + viewModel.getPlayerY() + ")";
+        info += "\nCurrent Location: (" + viewModel.getPlayerX() + ", " + viewModel.getPlayerY()
+                + ")";
         info += "\nFuel: " + viewModel.getFuelLevel() + "/" + viewModel.getMaxFuel();
 
         infoView.setText(info);

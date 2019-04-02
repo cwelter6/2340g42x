@@ -19,7 +19,8 @@ public class TravelViewModel {
         List<SolarSystem> travel = new ArrayList<>();
 
         for (SolarSystem ss : model.getSolarSystems()) {
-            if (model.getGame().getPlayer().canTravelTo(ss) && !ss.equals(model.getGame().getPlayer().getCurrentSolarSystem())) {
+            if (model.getGame().getPlayer().canTravelTo(ss) && !ss.equals(model.getGame()
+                    .getPlayer().getCurrentSolarSystem())) {
                 travel.add(ss);
             }
         }

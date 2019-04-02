@@ -32,7 +32,8 @@ public class ConfigurationViewModel extends ViewModel {
         if (pointSum == MAXIMUM_SKILL_POINTS && name.length() != 0) {
             //call the setGame() method in Model to start the game
             //Model.getInstance() refers to the Model
-            model.setGame(new Player(name, pilotPoints, engineerPoints, traderPoints, fighterPoints), difficultyLevel);
+            model.setGame(new Player(name, pilotPoints, engineerPoints, traderPoints,
+                    fighterPoints), difficultyLevel);
             return "success";
         } else if (name.length() == 0) {
             return "Error: The name of the player can not be empty";

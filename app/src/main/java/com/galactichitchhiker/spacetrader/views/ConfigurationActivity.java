@@ -100,7 +100,8 @@ public class ConfigurationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (viewModel.loadGame(context)) {
-                    Intent intent = new Intent(ConfigurationActivity.this, PlayerInformationActivity.class);
+                    Intent intent = new Intent(ConfigurationActivity.this,
+                            PlayerInformationActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(context, "Could not load game!", Toast.LENGTH_LONG).show();

@@ -1,12 +1,11 @@
 package com.galactichitchhiker.spacetrader.views;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,7 +79,8 @@ public class MarketplaceActivity extends AppCompatActivity {
                     buyButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(c, viewModel.buyGood(tgF, cost), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(c, viewModel.buyGood(tgF, cost),
+                                    Toast.LENGTH_SHORT).show();
                             updateMarketInfo();
                         }
                     });
@@ -97,7 +97,8 @@ public class MarketplaceActivity extends AppCompatActivity {
                     sellButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(c, viewModel.sellGood(tgF, cost), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(c, viewModel.sellGood(tgF, cost),
+                                    Toast.LENGTH_SHORT).show();
                             updateMarketInfo();
                         }
                     });
@@ -126,7 +127,8 @@ public class MarketplaceActivity extends AppCompatActivity {
 
         int spaceTotal = viewModel.getGame().getPlayer().getCurrentShip().getMaxCargoSpace();
 
-        marketInfo.setText("Balance: $" + credits + ", Cargo Space: " + spaceUsed + "/" + spaceTotal + ", Tech Level: " + viewModel.getTechLevel());
+        marketInfo.setText("Balance: $" + credits + ", Cargo Space: " + spaceUsed + "/"
+                + spaceTotal + ", Tech Level: " + viewModel.getTechLevel());
 
         for (TradeGoods tg : TradeGoods.values()) {
 

@@ -1,9 +1,7 @@
 package com.galactichitchhiker.spacetrader.models;
 
-import java.util.List;
-import java.util.function.IntPredicate;
 import java.util.ArrayList;
-import java.lang.Math;
+import java.util.List;
 
 /**
  * Holds player information and all getter and setter methods
@@ -35,7 +33,8 @@ public class Player {
      * @param traderPoints   - trader skill points
      * @param fighterPoints  - fighter skill points
      */
-    public Player(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints) {
+    public Player(String name, int pilotPoints, int engineerPoints, int traderPoints,
+                  int fighterPoints) {
 
         this.name = name;
 
