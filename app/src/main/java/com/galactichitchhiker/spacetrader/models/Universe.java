@@ -162,6 +162,9 @@ public class Universe {
 
     }
 
+    public Set<SolarSystem> getSolarSystems() {
+        return solarSystems;
+    }
 
     public SolarSystem getSolarSystemByIndex(int i) {
         return (SolarSystem) solarSystems.toArray()[0];

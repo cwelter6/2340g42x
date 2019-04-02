@@ -144,4 +144,8 @@ public class SolarSystem {
 
     }
 
+    public boolean equals(SolarSystem ss) {
+        return name.equals(ss.getName()) && x == ss.x && y == ss.y;
+    }
+
 }
