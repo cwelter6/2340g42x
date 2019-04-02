@@ -162,10 +162,20 @@ public class Universe {
 
     }
 
+    /**
+     * find all solarSystems
+     * @return a set of solarSystems
+     */
     public Set<SolarSystem> getSolarSystems() {
         return solarSystems;
     }
 
+    /**
+     * find the solar system
+     *
+     * @param i the index of the solar system you want to find
+     * @return the solar system you want to find
+     */
     public SolarSystem getSolarSystemByIndex(int i) {
         return (SolarSystem) solarSystems.toArray()[0];
     }

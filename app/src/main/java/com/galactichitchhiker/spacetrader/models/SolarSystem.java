@@ -131,7 +131,10 @@ public class SolarSystem {
         return resources;
     }
 
-
+    /**
+     * to String for the planet
+     * @return the information about a planet
+     */
     public String toString(){
 
         String s = "Planet\n";
@@ -144,6 +147,11 @@ public class SolarSystem {
 
     }
 
+    /**
+     * find out whether 2 solarSystems are the same
+     * @param ss the solarSystem being compared
+     * @return whether 2 solarSystems are the same
+     */
     public boolean equals(SolarSystem ss) {
         return name.equals(ss.getName()) && x == ss.x && y == ss.y;
     }
