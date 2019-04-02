@@ -22,6 +22,7 @@ public class Ship {
      * @param type type of the Ship created
      */
     public Ship(ShipType type) {
+        this.type = type;
         maxCargoSpace = type.getCargoCapacity();
         fuelCapacity = type.getFuelCapacity();
         fuel = fuelCapacity;
