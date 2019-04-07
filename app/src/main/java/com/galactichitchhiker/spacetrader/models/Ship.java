@@ -60,11 +60,11 @@ public class Ship {
      * @param sub amount substracted
      */
     public void subtractFuel(double sub) {
-        if (sub < 0) {
+        if (sub < 0.0) {
             System.out.println("can not subtract negative numbers");
         } else {
-            if (fuel - sub < 0) {
-                fuel = 0;
+            if (fuel - sub < 0.0) {
+                fuel = 0.0;
             } else {
                 fuel -= sub;
             }
