@@ -261,7 +261,7 @@ public class Player {
             setCurrentSolarSystem(s);
 
 
-            if (Math.random()*100 < 20) {
+            if (Math.random()*100 < 50) {
 
                 credits += 100;
                 return "Traveled to " + s.getName() + " and found 100 credits!";
@@ -297,6 +297,100 @@ public class Player {
         int distanceX = finalX - getX();
         int distanceY = finalY - getY();
         return Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
+    }
+
+
+    /**
+     * Get current fuel level
+     *
+     * @return double - fuel
+     */
+    public double getCurrentFuel() {
+        return currentShip.getFuel();
+    }
+
+    /**
+    * Get max fuel level
+    *
+    * @return double - max fuel
+    */
+    public double getMaxFuel() {
+        return currentShip.getFuelCapacity();
+    }
+
+    /**
+    * Get used cargo space
+    *
+    * @return int
+    */
+    public int getUsedCargoSpace() {
+       return currentShip.getUsedCargoSpace();
+    }
+
+    /**
+    * Get max cargo space
+    *
+    * @return int
+    */
+    public int getMaxCargoSpace() {
+       return currentShip.getMaxCargoSpace();
+    }
+
+    /**
+    * Get remaining cargo space
+    *
+    * @return int
+    */
+    public int getRemainingCargoSpace() {
+       return currentShip.getRemainingCargoSpace();
+    }
+
+    /**
+    * Get tech level as int
+    *
+    * @return int
+    */
+    public int getTechLevelAsInt() {
+       return currentSolarSystem.getTechLevel().ordinal();
+    }
+
+   /**
+     * get the amount of cargo of type g we have
+     * @param g the type of the trade good
+     * @return the amount of type g good we have
+     */
+    public int getCargoAmountOf(TradeGoods g) {
+        return currentShip.getCargoAmountOf(g);
+    }
+
+    /**
+     * add cargo
+     * @param g the type of goods to be added
+     * @param num the number of goods to be added
+     */
+    public void addCargoOf(TradeGoods g, int num) {
+
+        currentShip.addCargoOf(g, num);
+
+    }
+
+    /**
+     * remove cargo
+     * @param g the type of goods to be removed
+     * @param num the number of goods to be removed
+     */
+    public void removeCargoOf(TradeGoods g, int num) {
+
+        currentShip.removeCargoOf(g, num);
+
+    }
+
+    /**
+     * Get name of current solar system
+     * @return String
+     */
+    public String getCurrentSolarSystemName(){
+        return currentSolarSystem.getName();
     }
 
 }

@@ -3,6 +3,7 @@ package com.galactichitchhiker.spacetrader.models;
 /**
  * Enum for types of ships
  */
+@SuppressWarnings({"FieldCanBeLocal", "FieldMayBeFinal"})
 public enum ShipType {
     FLEA(25, 10, 20, 0, 0, 0, 1),
     GNAT(100, 15, 14, 1, 0, 1, 1),

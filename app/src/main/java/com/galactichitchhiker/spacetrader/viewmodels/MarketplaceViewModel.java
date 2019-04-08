@@ -1,44 +1,47 @@
 package com.galactichitchhiker.spacetrader.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
-import android.widget.Toast;
 
 import com.galactichitchhiker.spacetrader.models.Game;
 import com.galactichitchhiker.spacetrader.models.Model;
-import com.galactichitchhiker.spacetrader.models.TechLevel;
 import com.galactichitchhiker.spacetrader.models.TradeGoods;
 
 
+/**
+ * Market view model
+ */
 public class MarketplaceViewModel extends ViewModel {
 
-    private Model model;
+    private final Model model = Model.getInstance();
 
-    public MarketplaceViewModel() {
-        model = Model.getInstance();
-    }
-
-    public Game getGame() {
-        return model.getGame();
-    }
-
+    /**
+     * Get tech level
+     * @return int
+     */
     public int getTechLevel() {
-        return getGame().getPlayer().getCurrentSolarSystem().getTechLevel().ordinal();
+        return model.getTechLevelAsInt();
     }
 
+    /**
+     * Buy a good
+     * @param tg - TradeGood to buy
+     * @param cost - Cost of tradegood
+     * @return String - result
+     */
     public String buyGood(TradeGoods tg, int cost) {
 
-        if (getGame().getPlayer().getCredits() < cost) {
+        if (model.getCredits() < cost) {
 
             return "Not enough credits!";
 
-        } else if (getGame().getPlayer().getCurrentShip().getRemainingCargoSpace() < 1){
+        } else if (model.getRemainingCargoSpace() < 1){
 
             return "Not enough cargo space!";
 
         } else {
 
-            getGame().getPlayer().subtractCredits(cost);
-            getGame().getPlayer().getCurrentShip().addCargoOf(tg, 1);
+            model.subtractCredits(cost);
+            model.addCargoOf(tg, 1);
 
             return "Bought " + tg.name() + "!";
 
@@ -46,6 +49,12 @@ public class MarketplaceViewModel extends ViewModel {
 
     }
 
+    /**
+     * Sell a trade good
+     * @param tg - Tradegood
+     * @param cost - cost of tradegood
+     * @return String - result
+     */
     public String sellGood(TradeGoods tg, int cost) {
 
         if (countOf(tg) < 1){
@@ -54,8 +63,8 @@ public class MarketplaceViewModel extends ViewModel {
 
         } else {
 
-            getGame().getPlayer().addCredits(cost);
-            getGame().getPlayer().getCurrentShip().removeCargoOf(tg, 1);
+            model.addCredits(cost);
+            model.removeCargoOf(tg, 1);
 
             return "Sold " + tg.name() + "!";
 
@@ -63,13 +72,31 @@ public class MarketplaceViewModel extends ViewModel {
 
     }
 
+    /**
+     * Get current amount of a trade good
+     * @param t - TradeGood
+     * @return int - amount of that TradeGood
+     */
     public int countOf(TradeGoods t) {
-        return getGame().getPlayer().getCurrentShip().getCargoAmountOf(t);
+        return model.getCargoAmountOf(t);
     }
 
+    /**
+     * Calculate market price of a TradeGood
+     * @param t - TradeGood
+     * @return int - price
+     */
     public int priceOf(TradeGoods t) {
         return t.getPrice(getTechLevel());
     }
 
+
+    /**
+     * Construct market info string
+     * @return String - market info
+     */
+    public String constructMarketInfoText() {
+        return "Balance: $" + model.getCredits() + ", Cargo Space: " + model.getUsedCargoSpace() + "/" + model.getMaxCargoSpace() + ", Tech Level: " + getTechLevel();
+    }
 
 }

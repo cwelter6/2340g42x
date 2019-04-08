@@ -6,21 +6,24 @@ import com.galactichitchhiker.spacetrader.models.SolarSystem;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Travel view model
+ */
 public class TravelViewModel {
 
-    private Model model;
+    private final Model model = Model.getInstance();
 
-    public TravelViewModel() {
-        model = Model.getInstance();
-    }
 
+    /**
+     * Get list of solar systems that the player can travel to
+     * @return List<SolarSystem>
+     */
     public List<SolarSystem> getSolarSystemsCanTravelTo() {
 
         List<SolarSystem> travel = new ArrayList<>();
 
         for (SolarSystem ss : model.getSolarSystems()) {
-            if (model.getGame().getPlayer().canTravelTo(ss) && !ss.equals(model.getGame()
-                    .getPlayer().getCurrentSolarSystem())) {
+            if (model.canTravelTo(ss) && !ss.equals(model.getCurrentSolarSystem())) {
                 travel.add(ss);
             }
         }
@@ -29,8 +32,13 @@ public class TravelViewModel {
 
     }
 
+    /**
+     * Travel to a solar system
+     * @param ss - SolarSystem to travel to
+     * @return String - result
+     */
     public String travel(SolarSystem ss) {
-        return model.getGame().getPlayer().travel(ss);
+        return model.travel(ss);
     }
 
 }

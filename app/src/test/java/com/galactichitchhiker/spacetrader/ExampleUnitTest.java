@@ -14,10 +14,12 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    Ship ship;
     private static int failures = 0;
     private static int successes = 0;
     private static final int TIMEOUT = 200;
+
+    private Ship ship;
+
 
     @Before
     public void setup() {
@@ -26,7 +28,7 @@ public class ExampleUnitTest {
     }
 
     @Test(timeout = TIMEOUT)
-    public void testSubstractFuel() {
+    public void testSubtractFuel() {
         //whitebox tech: should test: sub < 0, sub >= 0, fuel - sub < 0, fuel - sub >= 0
         //sub < 0
         ship.subtractFuel(-1);
@@ -46,6 +48,31 @@ public class ExampleUnitTest {
         ship.subtractFuel(14);
         assertEquals("returned map has incorrect values",
                 0.0, ship.getFuel(), 0.0000000001);
+    }
+
+
+    @Test(timeout = TIMEOUT)
+    public void testAddFuel() {
+
+        assertEquals("Ship does not have initially full tank", ship.getFuel(), ship.getFuelCapacity(), 0.0000000001);
+
+
+        ship.subtractFuel(10);
+
+        ship.addFuel(-10);
+
+        assertEquals("Add fuel does not handle negative value", ship.getFuel(), ship.getFuelCapacity() - 10, 0.0000000001);
+
+
+        ship.addFuel(5);
+
+        assertEquals("Does not add fuel correctly", ship.getFuel(), ship.getFuelCapacity() - 5, 0.0000000001);
+
+
+        ship.addFuel(100);
+
+        assertEquals("Does not overflow when adding fuel correctly", ship.getFuel(), ship.getFuelCapacity(), 0.0000000001);
+
     }
 
     public void addition_isCorrect() {

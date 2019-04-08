@@ -14,16 +14,12 @@ import com.galactichitchhiker.spacetrader.viewmodels.PlayerInformationViewModel;
 
 
 //you have to have a view model for each view
+/**
+ * Player information screen
+ */
 public class PlayerInformationActivity extends AppCompatActivity {
 
-    private TextView playerNameText;
-    private TextView pilotPointsText;
-    private TextView engineerPointsText;
-    private TextView traderPointsText;
-    private TextView fighterPointsText;
-    private TextView gameDifficultyText;
-    
-    PlayerInformationViewModel viewModel;
+    private PlayerInformationViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,34 +28,30 @@ public class PlayerInformationActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        playerNameText = findViewById(R.id.player_name_text);
-        pilotPointsText = findViewById(R.id.pilot_points_text);
-        engineerPointsText = findViewById(R.id.engineer_points_text);
-        traderPointsText = findViewById(R.id.trader_points_text);
-        fighterPointsText = findViewById(R.id.fighter_points_text);
-        gameDifficultyText = findViewById(R.id.game_difficulty_text);
+        TextView playerNameText = findViewById(R.id.player_name_text);
+        TextView pilotPointsText = findViewById(R.id.pilot_points_text);
+        TextView engineerPointsText = findViewById(R.id.engineer_points_text);
+        TextView traderPointsText = findViewById(R.id.trader_points_text);
+        TextView fighterPointsText = findViewById(R.id.fighter_points_text);
+        TextView gameDifficultyText = findViewById(R.id.game_difficulty_text);
 
         //get data from view model instead of from model
-        viewModel = ViewModelProviders.of(this).get(PlayerInformationViewModel.class);
+        viewModel = new PlayerInformationViewModel();
 
-        playerNameText.setText(viewModel.getGame().getPlayer().getName());
-        pilotPointsText.setText(Integer.toString(viewModel.getGame().getPlayer()
-                .getPilotPoints()));
-        engineerPointsText.setText(String.format("%d", viewModel.getGame().getPlayer()
-                .getEngineerPoints()));
-        traderPointsText.setText(String.format("%d", viewModel.getGame().getPlayer()
-                .getTraderPoints()));
-        fighterPointsText.setText(String.format("%d", viewModel.getGame().getPlayer()
-                .getFighterPoints()));
+        playerNameText.setText(viewModel.getName());
+        pilotPointsText.setText(Integer.toString(viewModel.getPilotPoints()));
+        engineerPointsText.setText(String.format("%d", viewModel.getEngineerPoints()));
+        traderPointsText.setText(String.format("%d", viewModel.getTraderPoints()));
+        fighterPointsText.setText(String.format("%d", viewModel.getFighterPoints()));
         //
-        gameDifficultyText.setText(viewModel.getGame().getDifficultyLevel().toString());
+        gameDifficultyText.setText(viewModel.getDifficultyLevelAsString());
 
         Button startButton = findViewById(R.id.start_button);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onStartPressed(view);
+                onStartPressed();
             }
         });
     }
@@ -67,9 +59,8 @@ public class PlayerInformationActivity extends AppCompatActivity {
 
     /**
      * Go to control center screen
-     * @param view
      */
-    public void onStartPressed(View view) {
+    private void onStartPressed() {
         Intent intent = new Intent(PlayerInformationActivity.this, ControlCenterActivity.class);
         startActivity(intent);
     }

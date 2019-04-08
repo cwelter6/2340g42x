@@ -28,7 +28,7 @@ public class Ship {
         fuel = fuelCapacity;
         usedCargoSpace = 0;
 
-        cargo = new HashMap<TradeGoods, Integer>();
+        cargo = new HashMap<>();
 
         for (TradeGoods g : TradeGoods.values()) {
             cargo.put(g, 0);
@@ -49,6 +49,11 @@ public class Ship {
      * @param newFuel amount of fuel to add
      */
     public void addFuel(double newFuel) {
+
+         if (newFuel < 0) {
+             return;
+         }
+
          fuel = fuel + newFuel;
          if (fuel > fuelCapacity) {
              fuel = fuelCapacity;
@@ -60,11 +65,11 @@ public class Ship {
      * @param sub amount substracted
      */
     public void subtractFuel(double sub) {
-        if (sub < 0.0) {
+        if (sub < 0) {
             System.out.println("can not subtract negative numbers");
         } else {
-            if (fuel - sub < 0.0) {
-                fuel = 0.0;
+            if (fuel - sub < 0) {
+                fuel = 0;
             } else {
                 fuel -= sub;
             }
@@ -93,7 +98,11 @@ public class Ship {
      * @return the amount of type g good we have
      */
     public int getCargoAmountOf(TradeGoods g) {
-        return cargo.get(g);
+        try {
+            return cargo.get(g);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -104,11 +113,11 @@ public class Ship {
     public void addCargoOf(TradeGoods g, int num) {
 
 
-        if (maxCargoSpace < usedCargoSpace + num) {
+        if (maxCargoSpace < (usedCargoSpace + num)) {
             return; //Not enough space
         }
 
-        cargo.put(g, cargo.get(g) + num);
+        cargo.put(g, getCargoAmountOf(g) + num);
 
         usedCargoSpace += num;
     }
@@ -120,11 +129,11 @@ public class Ship {
      */
     public void removeCargoOf(TradeGoods g, int num) {
 
-        if (cargo.get(g) < num) {
+        if (getCargoAmountOf(g) < num) {
             return; //Not enough cargo
         }
 
-        cargo.put(g, cargo.get(g) - num);
+        cargo.put(g, getCargoAmountOf(g) - num);
 
         usedCargoSpace -= num;
     }

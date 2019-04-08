@@ -12,9 +12,13 @@ import android.widget.Toast;
 import com.galactichitchhiker.spacetrader.R;
 import com.galactichitchhiker.spacetrader.viewmodels.ControlCenterViewModel;
 
+
+/**
+ * Control center screen
+ */
 public class ControlCenterActivity extends AppCompatActivity {
 
-    ControlCenterViewModel viewModel = new ControlCenterViewModel();
+    private final ControlCenterViewModel viewModel = new ControlCenterViewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,7 @@ public class ControlCenterActivity extends AppCompatActivity {
         //Get current info textview
         TextView infoView = findViewById(R.id.current_info);
 
-        String info = "Current Planet: " + viewModel.getCurrentSolarSystem().getName();
+        String info = "Current Planet: " + viewModel.getCurrentSolarSystemName();
         info += "\nCurrent Location: (" + viewModel.getPlayerX() + ", " + viewModel.getPlayerY()
                 + ")";
         info += "\nFuel: " + viewModel.getFuelLevel() + "/" + viewModel.getMaxFuel();
@@ -63,10 +67,19 @@ public class ControlCenterActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (viewModel.saveGame(context)) {
-                    Toast.makeText(context, "Saved game!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Failed to save game", Toast.LENGTH_SHORT).show();
+                try {
+                    Toast t1 = Toast.makeText(context, "Saving...", Toast.LENGTH_SHORT);
+                    t1.show();
+                    if (viewModel.saveGame(context)) {
+                        Toast t = Toast.makeText(context, "Saved game!", Toast.LENGTH_SHORT);
+                        t.show();
+                    } else {
+                        Toast t = Toast.makeText(context, "Failed to save game", Toast.LENGTH_SHORT);
+                        t.show();
+                    }
+                } catch (Exception e) {
+                    Toast t1 = Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT);
+                    t1.show();
                 }
             }
         });
