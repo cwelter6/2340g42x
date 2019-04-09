@@ -113,7 +113,7 @@ public class Ship {
     public void addCargoOf(TradeGoods g, int num) {
 
 
-        if (maxCargoSpace < (usedCargoSpace + num)) {
+        if (maxCargoSpace < (usedCargoSpace + num) || num < 0) {
             return; //Not enough space
         }
 
