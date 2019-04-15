@@ -98,10 +98,11 @@ public class Ship {
      * @return the amount of type g good we have
      */
     public int getCargoAmountOf(TradeGoods g) {
-        try {
-            return cargo.get(g);
-        } catch (Exception e) {
-            return -1;
+        Integer cargoAmount = cargo.get(g);
+        if (cargoAmount != null) {
+            return cargoAmount;
+        } else {
+            return 0;
         }
     }
 
@@ -129,13 +130,17 @@ public class Ship {
      */
     public void removeCargoOf(TradeGoods g, int num) {
 
-        if (getCargoAmountOf(g) < num) {
+        System.out.println("Cargo amount of g: " + getCargoAmountOf(g));
+        System.out.println("Num: " + num);
+        if (getCargoAmountOf(g) < num || num < 0) {
+            System.out.println("In if statement");
             return; //Not enough cargo
         }
-
+        System.out.println("Past if statement");
         cargo.put(g, getCargoAmountOf(g) - num);
 
         usedCargoSpace -= num;
+
     }
 
     /**

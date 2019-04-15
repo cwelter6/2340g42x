@@ -102,6 +102,56 @@ public class ExampleUnitTest {
 
     }
 
+    @Test(timeout = TIMEOUT)
+    public void testRemoveCargoOf() {
+        for (TradeGoods good : TradeGoods.values()) {
+            ship.addCargoOf(good, 1);
+        }
+        ship.removeCargoOf(null, 0);
+        for (TradeGoods good : TradeGoods.values()) {
+            assertEquals("Cargo amount changed when TradeGood g is null", 1, ship.getCargoAmountOf(good));
+        }
+        assertEquals("Used cargo space is inaccurate when TradeGood g is null", ship.getUsedCargoSpace(), TradeGoods.values().length);
+
+
+        ship.removeCargoOf(TradeGoods.FOOD, 1);
+        for (TradeGoods good : TradeGoods.values()) {
+            if (!good.equals(TradeGoods.FOOD)) {
+                assertEquals("Cargo amount changed for the wrong TradeGood", 1, ship.getCargoAmountOf(good));
+            } else {
+                assertEquals("Removed the incorrect amount of cargo", 0, ship.getCargoAmountOf(good));
+                assertEquals("Cargo amount of good changed incorrectly", 0, ship.getCargoAmountOf(good));
+            }
+        }
+        assertEquals("Used cargo space is inaccurate after change", ship.getUsedCargoSpace(), TradeGoods.values().length - 1);
+
+
+        ship.removeCargoOf(TradeGoods.FIREARMS, -1);
+        for (TradeGoods good : TradeGoods.values()) {
+            if (!good.equals(TradeGoods.FOOD)) {
+                assertEquals("Cargo amount changed when num is negative", 1, ship.getCargoAmountOf(good));
+            }
+        }
+        assertEquals("Used cargo space is inaccurate when num is negative", ship.getUsedCargoSpace(), TradeGoods.values().length - 1);
+
+
+        ship.removeCargoOf(TradeGoods.FURS, 3);
+        assertEquals("Should not remove cargo when num is greater than amount of cargo stored", 1, ship.getCargoAmountOf(TradeGoods.FURS));
+        assertEquals("Used cargo space is inaccurate after change", ship.getUsedCargoSpace(), TradeGoods.values().length - 1);
+
+
+        int usedCargoSpace = TradeGoods.values().length;
+        ship.addCargoOf(TradeGoods.FOOD, 1);
+        for (TradeGoods good : TradeGoods.values()) {
+            ship.removeCargoOf(good, 1);
+            assertEquals("Cargo amount of good changed incorrectly", 0, ship.getCargoAmountOf(good));
+            usedCargoSpace--;
+            assertEquals("Used cargo space is inaccurate after change", usedCargoSpace, ship.getUsedCargoSpace());
+
+        }
+
+    }
+
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
