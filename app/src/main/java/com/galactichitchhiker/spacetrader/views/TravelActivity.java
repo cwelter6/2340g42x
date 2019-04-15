@@ -52,7 +52,8 @@ public class TravelActivity extends AppCompatActivity {
 
             //Create location
             planetLocation = new TextView(this);
-            planetLocation.setText("   (" + ss.getX() + ", " + ss.getY() + ")");
+            String text = "   (" + ss.getX() + ", " + ss.getY() + ")";
+            planetLocation.setText(text);
 
             itemView.addView(planetLocation);
 

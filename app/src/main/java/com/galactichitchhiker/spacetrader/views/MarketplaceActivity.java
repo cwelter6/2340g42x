@@ -77,7 +77,8 @@ public class MarketplaceActivity extends AppCompatActivity {
             //Create cost
             int cost = viewModel.priceOf(tg);
             itemCost = new TextView(this);
-            itemCost.setText("   $" + cost);
+            String text = "   $" + cost;
+            itemCost.setText(text);
 
             itemView.addView(itemCost);
 
@@ -155,7 +156,8 @@ public class MarketplaceActivity extends AppCompatActivity {
             TextView cv = countViews.get(tg);
 
             if (cv != null) {
-                cv.setText("   " + viewModel.countOf(tg) + "   ");
+                String text = "   " + viewModel.countOf(tg) + "   ";
+                cv.setText(text);
             }
 
         }
