@@ -1,5 +1,7 @@
 package com.galactichitchhiker.spacetrader.models;
 
+import android.util.Log;
+
 import java.util.HashMap;
 
 /**
@@ -10,12 +12,11 @@ public class Ship {
 
     private ShipType type;
 
-    private int maxCargoSpace;
     private int usedCargoSpace;
     private double fuel;
-    private double fuelCapacity;
 
-    private HashMap<TradeGoods, Integer> cargo; //Holds number of each tradegood in Ships' cargo
+    private final HashMap<TradeGoods, Integer> cargo;
+    //Holds number of each trade good in Ships' cargo
 
     /**
      * constructor of Ship
@@ -23,9 +24,7 @@ public class Ship {
      */
     public Ship(ShipType type) {
         this.type = type;
-        maxCargoSpace = type.getCargoCapacity();
-        fuelCapacity = type.getFuelCapacity();
-        fuel = fuelCapacity;
+        fuel = type.getFuelCapacity();
         usedCargoSpace = 0;
 
         cargo = new HashMap<>();
@@ -44,6 +43,14 @@ public class Ship {
 
 
     /**
+     * Set type of ship
+     * @param type - ShipType
+     */
+    public void setType(ShipType type) {
+        this.type = type;
+    }
+
+    /**
      * Adds fuel to the ship
      *
      * @param newFuel amount of fuel to add
@@ -55,8 +62,8 @@ public class Ship {
          }
 
          fuel = fuel + newFuel;
-         if (fuel > fuelCapacity) {
-             fuel = fuelCapacity;
+         if (fuel > getFuelCapacity()) {
+             fuel = getFuelCapacity();
          }
     }
 
@@ -66,9 +73,9 @@ public class Ship {
      */
     public void subtractFuel(double sub) {
         if (sub < 0) {
-            System.out.println("can not subtract negative numbers");
+            Log.e("ERROR", "can not subtract negative numbers");
         } else {
-            if (fuel - sub < 0) {
+            if ((fuel - sub) < 0) {
                 fuel = 0;
             } else {
                 fuel -= sub;
@@ -89,7 +96,7 @@ public class Ship {
      * @return max amount of fuel we can have
      */
     public double getFuelCapacity() {
-        return fuelCapacity;
+        return type.getFuelCapacity();
     }
 
     /**
@@ -113,7 +120,7 @@ public class Ship {
     public void addCargoOf(TradeGoods g, int num) {
 
 
-        if (maxCargoSpace < (usedCargoSpace + num)) {
+        if (getMaxCargoSpace() < (usedCargoSpace + num)) {
             return; //Not enough space
         }
 
@@ -151,7 +158,7 @@ public class Ship {
      * @return Max Cargo Space
      */
     public int getMaxCargoSpace() {
-        return maxCargoSpace;
+        return type.getCargoCapacity();
     }
 
     /**
@@ -159,6 +166,6 @@ public class Ship {
      * @return Remaining Cargo Space
      */
     public int getRemainingCargoSpace(){
-        return maxCargoSpace - usedCargoSpace;
+        return getMaxCargoSpace() - usedCargoSpace;
     }
 }

@@ -56,11 +56,11 @@ public class ControlCenterViewModel extends ViewModel {
 
     /**
      * Save game to file
-     * @param context
+     * @param context - screen
      * @return boolean - whether game was saved
      */
     public boolean saveGame(Context context) {
-        return model.saveGame(context);
+        return Model.saveGame(context);
     }
 
     /**
@@ -69,6 +69,18 @@ public class ControlCenterViewModel extends ViewModel {
      */
     public String getCurrentSolarSystemName(){
         return model.getCurrentSolarSystemName();
+    }
+
+    /**
+     * Construct text for control center info
+     * @return String
+     */
+    public String constuctInfoViewText(){
+        String info = "Current Planet: " + getCurrentSolarSystemName();
+        info += "\nCurrent Location: (" + getPlayerX() + ", " + getPlayerY()
+                + ")";
+        info += "\nFuel: " + getFuelLevel() + "/" + getMaxFuel();
+        return info;
     }
 
 }

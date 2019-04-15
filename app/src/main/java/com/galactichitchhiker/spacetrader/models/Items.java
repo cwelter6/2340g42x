@@ -1,7 +1,7 @@
 package com.galactichitchhiker.spacetrader.models;
 
 /**
- * Hold tradegoods and price
+ * Hold trade goods and price
  */
 public class Items {
     private int price;

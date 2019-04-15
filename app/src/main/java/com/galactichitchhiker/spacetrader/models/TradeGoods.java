@@ -1,9 +1,10 @@
 package com.galactichitchhiker.spacetrader.models;
 
-@SuppressWarnings("FieldCanBeLocal")
+
 /**
- * Hold trade goods
+ * Holds trade goods
  */
+@SuppressWarnings("FieldCanBeLocal")
 public enum TradeGoods {
     WATER(0	, 0, 2, 30, 3, 4, "DROUGHT", "LOTSOFWATER",	"DESERT", 30,50),
     FURS(0, 0, 0, 250, 10, 10, "COLD", "RICHFAUNA",	"LIFELESS", 230, 280),
@@ -17,17 +18,17 @@ public enum TradeGoods {
     ROBOTS(6, 4, 7, 5000, -150, 100, "LACKOFWORKERS", "Never",	"Never", 3500, 5000);
 
 
-    private int MTLP; //Minimum Tech Level to produce
-    private int MTLU; //Minimum Tech Level to use
-    private int TTP; //Tech Level which produces most of this item
-    private int basePrice;
-    private int IPL; //Price increase per tech level
-    private int Var; //Maximum percentage that the price can vary above or below the base
-    private String IE; //Radical price increase event
-    private String CR; //Cheap price condition
-    private String ER; //Expensive price condition
-    private int MTL; //Minimum price offered in space trade with random trader
-    private int MTH; //Maximum price offered in space trade with random trader
+    private final int MTLP; //Minimum Tech Level to produce
+    private final int MTLU; //Minimum Tech Level to use
+    private final int TTP; //Tech Level which produces most of this item
+    private final int basePrice;
+    private final int IPL; //Price increase per tech level
+    private final int Var; //Maximum percentage that the price can vary above or below the base
+    private final String IE; //Radical price increase event
+    private final String CR; //Cheap price condition
+    private final String ER; //Expensive price condition
+    private final int MTL; //Minimum price offered in space trade with random trader
+    private final int MTH; //Maximum price offered in space trade with random trader
 
     TradeGoods(int MTLP, int MTLU, int TTP, int basePrice, int IPL,
                int	Var, String IE, String CR, String ER, int MTL, int MTH) {

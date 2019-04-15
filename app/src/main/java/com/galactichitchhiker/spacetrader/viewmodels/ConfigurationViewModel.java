@@ -5,12 +5,11 @@ import android.content.Context;
 
 import com.galactichitchhiker.spacetrader.models.Game;
 import com.galactichitchhiker.spacetrader.models.Model;
-import com.galactichitchhiker.spacetrader.models.Player;
 
 /*this view model is for the configuration screen. It checks user's input and if valid,
  * ask the model to setGame() based on the user's input
  */
-@SuppressWarnings("ALL")
+
 /**
  * Player creation view model
  */
@@ -43,16 +42,15 @@ public class ConfigurationViewModel extends ViewModel {
             return "success";
         } else if (name.isEmpty()) {
             return "Error: The name of the player can not be empty";
-        } else if (pointSum != MAXIMUM_SKILL_POINTS) {
+        } else {
             return "Error: The total skill points have to be 16";
         }
-        return "An error occurred...";
     }
 
 
     /**
      * Load game from file
-     * @param context
+     * @param context - screen
      * @return boolean - whether game was loaded
      */
     public boolean loadGame(Context context) {

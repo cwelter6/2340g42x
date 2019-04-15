@@ -28,7 +28,7 @@ public class TravelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
-        LinearLayout itemList = (LinearLayout) findViewById(R.id.planet_list);
+        LinearLayout itemList = findViewById(R.id.planet_list);
 
         LinearLayout itemView;
 

@@ -2,7 +2,6 @@ package com.galactichitchhiker.spacetrader.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
 
-import com.galactichitchhiker.spacetrader.models.Game;
 import com.galactichitchhiker.spacetrader.models.Model;
 import com.galactichitchhiker.spacetrader.models.TradeGoods;
 
@@ -30,22 +29,7 @@ public class MarketplaceViewModel extends ViewModel {
      */
     public String buyGood(TradeGoods tg, int cost) {
 
-        if (model.getCredits() < cost) {
-
-            return "Not enough credits!";
-
-        } else if (model.getRemainingCargoSpace() < 1){
-
-            return "Not enough cargo space!";
-
-        } else {
-
-            model.subtractCredits(cost);
-            model.addCargoOf(tg, 1);
-
-            return "Bought " + tg.name() + "!";
-
-        }
+        return model.buyGood(tg, cost);
 
     }
 
@@ -96,7 +80,7 @@ public class MarketplaceViewModel extends ViewModel {
      * @return String - market info
      */
     public String constructMarketInfoText() {
-        return "Balance: $" + model.getCredits() + ", Cargo Space: " + model.getUsedCargoSpace() + "/" + model.getMaxCargoSpace() + ", Tech Level: " + getTechLevel();
+        return model.constructMarketInfoText();
     }
 
 }

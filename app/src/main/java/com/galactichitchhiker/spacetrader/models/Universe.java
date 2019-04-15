@@ -10,7 +10,6 @@ import java.util.Set;
 /**
  * Holds information for universe
  */
-@SuppressWarnings("FieldCanBeLocal")
 class Universe {
 
     private final Set<SolarSystem> solarSystems;
@@ -20,7 +19,7 @@ class Universe {
     private final int NUM_OF_PLANETS = 10;
 
     private final List<String> names = new ArrayList<>(Arrays.asList("Acamar",
-            "Adahn",        // The alternate personality for The Nameless One in "Planescape: Torment"
+            "Adahn",
             "Aldea",
             "Andevian",
             "Antedi",

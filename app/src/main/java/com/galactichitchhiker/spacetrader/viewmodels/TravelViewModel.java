@@ -3,7 +3,6 @@ package com.galactichitchhiker.spacetrader.viewmodels;
 import com.galactichitchhiker.spacetrader.models.Model;
 import com.galactichitchhiker.spacetrader.models.SolarSystem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,15 +19,7 @@ public class TravelViewModel {
      */
     public List<SolarSystem> getSolarSystemsCanTravelTo() {
 
-        List<SolarSystem> travel = new ArrayList<>();
-
-        for (SolarSystem ss : model.getSolarSystems()) {
-            if (model.canTravelTo(ss) && !ss.equals(model.getCurrentSolarSystem())) {
-                travel.add(ss);
-            }
-        }
-
-        return travel;
+        return model.getSolarSystemsCanTravelTo();
 
     }
 

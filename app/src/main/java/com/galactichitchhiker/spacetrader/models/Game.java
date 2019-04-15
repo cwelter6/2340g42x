@@ -74,7 +74,7 @@ public class Game {
     }
 
     /**
-     * Get playet y
+     * Get player y
      * @return int
      */
     public int getY() {

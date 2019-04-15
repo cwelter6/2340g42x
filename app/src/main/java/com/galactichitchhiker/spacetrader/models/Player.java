@@ -289,8 +289,8 @@ public class Player {
     /**
      * Calculate the distance from the player to a certain coordinate
      *
-     * @param finalX - x coord of destination
-     * @param finalY - y coord of destination
+     * @param finalX - x coordinate of destination
+     * @param finalY - y coordinate of destination
      * @return double - distance to destination
      */
     private double distanceTo(int finalX, int finalY) {

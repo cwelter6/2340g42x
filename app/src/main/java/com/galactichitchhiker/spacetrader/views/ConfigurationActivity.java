@@ -1,6 +1,5 @@
 package com.galactichitchhiker.spacetrader.views;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 
 import com.galactichitchhiker.spacetrader.R;
 import com.galactichitchhiker.spacetrader.models.Game;
-import com.galactichitchhiker.spacetrader.models.Player;
 import com.galactichitchhiker.spacetrader.viewmodels.ConfigurationViewModel;
 
 /**
@@ -25,7 +23,7 @@ import com.galactichitchhiker.spacetrader.viewmodels.ConfigurationViewModel;
  */
 public class ConfigurationActivity extends AppCompatActivity {
 
-    public static final int MAXIMUM_SKILL_POINTS = 16;
+    private static final int MAXIMUM_SKILL_POINTS = 16;
 
     private ConfigurationViewModel viewModel;
 
@@ -58,29 +56,14 @@ public class ConfigurationActivity extends AppCompatActivity {
         }
 
         //making a spinner for each skill
-        ArrayAdapter<Integer> pilotAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, possibleSkillPoints);
-        pilotAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        pilotSpinner.setAdapter(pilotAdapter);
-        pilotSpinner.setSelection(3);
+        constructSpinner(pilotSpinner, possibleSkillPoints);
 
-        ArrayAdapter<Integer> engineerAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, possibleSkillPoints);
-        engineerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        engineerSpinner.setAdapter(engineerAdapter);
-        engineerSpinner.setSelection(3);
+        constructSpinner(engineerSpinner, possibleSkillPoints);
 
-        ArrayAdapter<Integer> traderAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, possibleSkillPoints);
-        traderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        traderSpinner.setAdapter(traderAdapter);
-        traderSpinner.setSelection(3);
+        constructSpinner(traderSpinner, possibleSkillPoints);
 
-        ArrayAdapter<Integer> fighterAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, possibleSkillPoints);
-        fighterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        fighterSpinner.setAdapter(fighterAdapter);
-        fighterSpinner.setSelection(3);
+        constructSpinner(fighterSpinner, possibleSkillPoints);
+
 
         //make the spinner for the difficulty level
         ArrayAdapter<Game.GameDifficulty> difficultyAdapter = new ArrayAdapter<>(this,
@@ -152,6 +135,14 @@ public class ConfigurationActivity extends AppCompatActivity {
             startActivity(intent);
             Log.d("Edit", "Start activity");
         }
+    }
+
+    private void constructSpinner(Spinner spinner, Integer[] possibleSkillPoints) {
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, possibleSkillPoints);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(3);
     }
 
 }

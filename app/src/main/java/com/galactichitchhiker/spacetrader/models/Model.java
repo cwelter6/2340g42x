@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -99,15 +101,14 @@ public final class Model {
 
 
         try {
-            InputStream inputStream = context.openFileInput("savegame.json");
+            InputStream inputStream = context.openFileInput("game.json");
 
             if ( inputStream != null ) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString = "";
                 StringBuilder stringBuilder = new StringBuilder();
 
-                receiveString = bufferedReader.readLine();
+                String receiveString = bufferedReader.readLine();
                 while ( receiveString != null ) {
                     stringBuilder.append(receiveString);
                     receiveString = bufferedReader.readLine();
@@ -148,7 +149,7 @@ public final class Model {
             String game = gson.toJson(model);
 
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-                    context.openFileOutput("savegame.json", Context.MODE_PRIVATE));
+                    context.openFileOutput("game.json", Context.MODE_PRIVATE));
             outputStreamWriter.write(game);
             outputStreamWriter.close();
 
@@ -379,4 +380,62 @@ public final class Model {
     public String getCurrentSolarSystemName(){
         return game.getCurrentSolarSystemName();
     }
+
+
+    /**
+     * Get list of solar systems the player can travel to
+     * @return List<SolarSystem>
+     */
+    public List<SolarSystem> getSolarSystemsCanTravelTo() {
+
+        List<SolarSystem> travel = new ArrayList<>();
+
+        for (SolarSystem ss : getSolarSystems()) {
+            if (canTravelTo(ss) && !ss.equals(getCurrentSolarSystem())) {
+                travel.add(ss);
+            }
+        }
+
+        return travel;
+
+    }
+
+    /**
+     * Buy a good
+     * @param tg - TradeGood to buy
+     * @param cost - Cost of tradegood
+     * @return String - result
+     */
+    public String buyGood(TradeGoods tg, int cost) {
+
+        if (getCredits() < cost) {
+
+            return "Not enough credits!";
+
+        } else if (getRemainingCargoSpace() < 1){
+
+            return "Not enough cargo space!";
+
+        } else {
+
+            subtractCredits(cost);
+            addCargoOf(tg, 1);
+
+            return "Bought " + tg.name() + "!";
+
+        }
+
+    }
+
+    /**
+     * Construct market info string
+     * @return String - market info
+     */
+    public String constructMarketInfoText() {
+        return "Balance: $" + getCredits() +
+                ", Cargo Space: " + getUsedCargoSpace() + "/" + getMaxCargoSpace() +
+                ", Tech Level: " + getTechLevelAsInt();
+
+    }
+
 }

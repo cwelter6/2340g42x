@@ -1,6 +1,5 @@
 package com.galactichitchhiker.spacetrader.views;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +11,14 @@ import android.widget.TextView;
 import com.galactichitchhiker.spacetrader.R;
 import com.galactichitchhiker.spacetrader.viewmodels.PlayerInformationViewModel;
 
+import java.util.Locale;
+
 
 //you have to have a view model for each view
 /**
  * Player information screen
  */
 public class PlayerInformationActivity extends AppCompatActivity {
-
-    private PlayerInformationViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +35,16 @@ public class PlayerInformationActivity extends AppCompatActivity {
         TextView gameDifficultyText = findViewById(R.id.game_difficulty_text);
 
         //get data from view model instead of from model
-        viewModel = new PlayerInformationViewModel();
+        PlayerInformationViewModel viewModel = new PlayerInformationViewModel();
 
         playerNameText.setText(viewModel.getName());
         pilotPointsText.setText(Integer.toString(viewModel.getPilotPoints()));
-        engineerPointsText.setText(String.format("%d", viewModel.getEngineerPoints()));
-        traderPointsText.setText(String.format("%d", viewModel.getTraderPoints()));
-        fighterPointsText.setText(String.format("%d", viewModel.getFighterPoints()));
+        engineerPointsText.setText(String.format(Locale.getDefault(),
+                "%d", viewModel.getEngineerPoints()));
+        traderPointsText.setText(String.format(Locale.getDefault(),
+                "%d", viewModel.getTraderPoints()));
+        fighterPointsText.setText(String.format(Locale.getDefault(),
+                "%d", viewModel.getFighterPoints()));
         //
         gameDifficultyText.setText(viewModel.getDifficultyLevelAsString());
 

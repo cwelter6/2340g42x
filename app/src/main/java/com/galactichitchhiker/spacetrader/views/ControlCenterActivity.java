@@ -26,15 +26,10 @@ public class ControlCenterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_control_center);
 
 
-        //Get current info textview
+        //Get current info text view
         TextView infoView = findViewById(R.id.current_info);
 
-        String info = "Current Planet: " + viewModel.getCurrentSolarSystemName();
-        info += "\nCurrent Location: (" + viewModel.getPlayerX() + ", " + viewModel.getPlayerY()
-                + ")";
-        info += "\nFuel: " + viewModel.getFuelLevel() + "/" + viewModel.getMaxFuel();
-
-        infoView.setText(info);
+        infoView.setText(viewModel.constuctInfoViewText());
 
 
         //Travel button
@@ -74,7 +69,8 @@ public class ControlCenterActivity extends AppCompatActivity {
                         Toast t = Toast.makeText(context, "Saved game!", Toast.LENGTH_SHORT);
                         t.show();
                     } else {
-                        Toast t = Toast.makeText(context, "Failed to save game", Toast.LENGTH_SHORT);
+                        Toast t = Toast.makeText(context, "Failed to save",
+                                Toast.LENGTH_SHORT);
                         t.show();
                     }
                 } catch (Exception e) {

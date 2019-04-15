@@ -3,7 +3,7 @@ package com.galactichitchhiker.spacetrader.models;
 /**
  * Enum for types of ships
  */
-@SuppressWarnings({"FieldCanBeLocal", "FieldMayBeFinal"})
+@SuppressWarnings("FieldCanBeLocal")
 public enum ShipType {
     FLEA(25, 10, 20, 0, 0, 0, 1),
     GNAT(100, 15, 14, 1, 0, 1, 1),
@@ -18,13 +18,13 @@ public enum ShipType {
 
 
 
-    private int hullStrength;
-    private int cargoCapacity;
-    private int fuelCapacity;
-    private int weaponSlots;
-    private int shieldSlots;
-    private int gadgetSlots;
-    private int crewQuarters;
+    private final int hullStrength;
+    private final int cargoCapacity;
+    private final int fuelCapacity;
+    private final int weaponSlots;
+    private final int shieldSlots;
+    private final int gadgetSlots;
+    private final int crewQuarters;
 
     ShipType(int hullStrength, int cargoCapacity, int fuelCapacity, int weaponSlots,
              int shieldSlots, int gadgetSlots, int crewQuarters) {

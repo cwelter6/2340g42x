@@ -34,92 +34,118 @@ public class MarketplaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_marketplace);
 
 
-        LinearLayout itemList = (LinearLayout) findViewById(R.id.item_list);
+        LinearLayout itemList = findViewById(R.id.item_list);
 
-        LinearLayout itemView;
-
-
-        TextView itemTitle;
-        TextView itemCost;
-        TextView itemCount;
         countViews = new EnumMap<>(TradeGoods.class);
-        Button buyButton;
-        Button sellButton;
+
 
         for (TradeGoods tg : TradeGoods.values()) {
 
-            if (tg.canBuyAt(viewModel.getTechLevel()) || tg.canSellAt(viewModel.getTechLevel())) {
-
-                itemView = new LinearLayout(this);
-
-                //Create title
-                itemTitle = new TextView(this);
-                itemTitle.setText(tg.name());
-
-                itemView.addView(itemTitle);
-
-
-                //Create cost
-                final int cost = viewModel.priceOf(tg);
-                itemCost = new TextView(this);
-                itemCost.setText("   $" + cost);
-
-                itemView.addView(itemCost);
-
-                //Create count
-                itemCount = new TextView(this);
-                countViews.put(tg, itemCount);
-                itemView.addView(itemCount);
-
-
-                final Context c = this;
-                final TradeGoods tgF = tg;
-
-                if (tg.canBuyAt(viewModel.getTechLevel())) {
-                    //Create buy button
-                    buyButton = new Button(this);
-                    buyButton.setText("Buy");
-
-                    buyButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(c, viewModel.buyGood(tgF, cost),
-                                    Toast.LENGTH_SHORT).show();
-                            updateMarketInfo();
-                        }
-                    });
-
-                    itemView.addView(buyButton);
-                }
-
-
-                if (tg.canSellAt(viewModel.getTechLevel())) {
-                    //Create sell button
-                    sellButton = new Button(this);
-                    sellButton.setText("Sell");
-
-                    sellButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(c, viewModel.sellGood(tgF, cost),
-                                    Toast.LENGTH_SHORT).show();
-                            updateMarketInfo();
-                        }
-                    });
-
-                    itemView.addView(sellButton);
-                }
-
-                itemList.addView(itemView);
-
-            }
+            itemList.addView(constructTradeGoodView(tg));
 
         }
 
 
-        marketInfo = (TextView) findViewById(R.id.market_info);
+        marketInfo = findViewById(R.id.market_info);
         updateMarketInfo();
 
+    }
+
+
+    private LinearLayout constructTradeGoodView(TradeGoods tg) {
+
+        int tl = viewModel.getTechLevel();
+
+        if (tg.canBuyAt(tl) || tg.canSellAt(tl)) {
+
+            LinearLayout itemView;
+
+            TextView itemTitle;
+            TextView itemCost;
+            TextView itemCount;
+
+            Button buyButton;
+            Button sellButton;
+
+
+            itemView = new LinearLayout(this);
+
+            //Create title
+            itemTitle = new TextView(this);
+            itemTitle.setText(tg.name());
+
+            itemView.addView(itemTitle);
+
+
+            //Create cost
+            int cost = viewModel.priceOf(tg);
+            itemCost = new TextView(this);
+            itemCost.setText("   $" + cost);
+
+            itemView.addView(itemCost);
+
+            //Create count
+            itemCount = new TextView(this);
+            countViews.put(tg, itemCount);
+            itemView.addView(itemCount);
+
+            if (tg.canBuyAt(tl)) {
+                //Create buy button
+                itemView.addView(constructBuyButton(this, tg, cost));
+            }
+
+
+            if (tg.canSellAt(tl)) {
+                //Create sell button
+                itemView.addView(constructSellButton(this, tg, cost));
+            }
+
+            return (itemView);
+
+        }
+
+        return null;
+
+    }
+
+    private Button constructBuyButton(Context c, TradeGoods tg, int co) {
+        Button buyButton = new Button(this);
+        buyButton.setText("Buy");
+
+        final Context context = c;
+        final TradeGoods tgF = tg;
+        final int cost = co;
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast t = Toast.makeText(context, viewModel.buyGood(tgF, cost),
+                        Toast.LENGTH_SHORT);
+                t.show();
+                updateMarketInfo();
+            }
+        });
+
+        return buyButton;
+    }
+
+    private Button constructSellButton(Context c, TradeGoods tg, int co) {
+        Button sellButton = new Button(this);
+        sellButton.setText("Sell");
+
+        final Context context = c;
+        final TradeGoods tgF = tg;
+        final int cost = co;
+        sellButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast t = Toast.makeText(context, viewModel.sellGood(tgF, cost),
+                        Toast.LENGTH_SHORT);
+                t.show();
+                updateMarketInfo();
+            }
+        });
+
+        return sellButton;
     }
 
 
