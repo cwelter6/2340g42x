@@ -1,5 +1,6 @@
 package com.galactichitchhiker.spacetrader.models;
 
+
 /**
  * Holds information for solar systems
  */

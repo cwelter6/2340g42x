@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.galactichitchhiker.spacetrader.models.Game;
 import com.galactichitchhiker.spacetrader.models.Model;
+import com.galactichitchhiker.spacetrader.models.Player;
+
 
 /*this view model is for the configuration screen. It checks user's input and if valid,
  * ask the model to setGame() based on the user's input

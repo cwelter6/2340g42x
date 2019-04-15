@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -178,7 +179,7 @@ class Universe {
      */
     public SolarSystem getSolarSystemByIndex(int i) {
         try {
-            return (SolarSystem) solarSystems.toArray()[i];
+            return (SolarSystem) Objects.requireNonNull(solarSystems.toArray())[i];
         } catch (Exception e) {
             return null;
         }

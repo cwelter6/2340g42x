@@ -1,7 +1,5 @@
 package com.galactichitchhiker.spacetrader.models;
 
-import android.util.Log;
-
 import java.util.HashMap;
 
 /**
@@ -72,9 +70,7 @@ public class Ship {
      * @param sub amount substracted
      */
     public void subtractFuel(double sub) {
-        if (sub < 0) {
-            Log.e("ERROR", "can not subtract negative numbers");
-        } else {
+        if (sub >= 0) {
             if ((fuel - sub) < 0) {
                 fuel = 0;
             } else {
@@ -121,7 +117,7 @@ public class Ship {
     public void addCargoOf(TradeGoods g, int num) {
 
 
-        if (getMaxCargoSpace() < (usedCargoSpace + num) || num < 0) {
+        if ((getMaxCargoSpace() < (usedCargoSpace + num)) || (num < 0)) {
             return; //Not enough space
         }
 
@@ -137,7 +133,7 @@ public class Ship {
      */
     public void removeCargoOf(TradeGoods g, int num) {
 
-        if (getCargoAmountOf(g) < num || num < 0) {
+        if ((getCargoAmountOf(g) < num) || (num < 0)) {
             return; //Not enough cargo
         }
         cargo.put(g, getCargoAmountOf(g) - num);
