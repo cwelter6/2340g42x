@@ -89,7 +89,11 @@ public class Ship {
      * @return the amount of type g good we have
      */
     public int getCargoAmountOf(TradeGoods g) {
-        return cargo.get(g);
+        Integer cargoAmount = cargo.get(g);
+        if (cargoAmount == null) {
+            return 0;
+        }
+        return cargoAmount;
     }
 
     /**
@@ -103,8 +107,10 @@ public class Ship {
         if (maxCargoSpace < usedCargoSpace + num) {
             return; //Not enough space
         }
-
-        cargo.put(g, cargo.get(g) + num);
+        Integer cargoAmount = cargo.get(g);
+        if (cargoAmount != null) {
+            cargo.put(g, cargoAmount + num);
+        }
 
         usedCargoSpace += num;
     }
@@ -115,13 +121,14 @@ public class Ship {
      * @param num the number of goods to be removed
      */
     public void removeCargoOf(TradeGoods g, int num) {
+        Integer cargoAmount = cargo.get(g);
+        if (cargoAmount != null) {
+            if (cargoAmount < num) {
+                return; //Not enough cargo
+            }
 
-        if (cargo.get(g) < num) {
-            return; //Not enough cargo
+            cargo.put(g, cargoAmount - num);
         }
-
-        cargo.put(g, cargo.get(g) - num);
-
         usedCargoSpace -= num;
     }
 

@@ -132,9 +132,9 @@ public class MarketplaceActivity extends AppCompatActivity {
 
         for (TradeGoods tg : TradeGoods.values()) {
 
-            if (countViews.get(tg) != null)
+            if (countViews.get(tg) != null) {
                 countViews.get(tg).setText("   " + viewModel.countOf(tg) + "   ");
-
+            }
         }
 
     }

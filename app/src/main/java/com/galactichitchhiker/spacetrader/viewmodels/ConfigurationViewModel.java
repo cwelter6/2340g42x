@@ -37,10 +37,9 @@ public class ConfigurationViewModel extends ViewModel {
             return "success";
         } else if (name.length() == 0) {
             return "Error: The name of the player can not be empty";
-        } else if (pointSum != MAXIMUM_SKILL_POINTS) {
+        } else {
             return "Error: The total skill points have to be 16";
         }
-        return "An error occured...";
     }
 
 
