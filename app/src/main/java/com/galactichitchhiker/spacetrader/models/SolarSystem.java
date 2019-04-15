@@ -140,8 +140,8 @@ public class SolarSystem {
         String s = "Planet\n";
         s += "Name: " + name + "\n";
         s += "Location: (" + x + ", " + y + ")" + "\n";
-        s += "Tech Level: " + getTechLevel().name() + "\n";
-        s += "Resources: " + getResources().name() + "\n";
+        s += "Tech Level: " + techLevel.name() + "\n";
+        s += "Resources: " + resources.name() + "\n";
 
         return s;
 
@@ -153,7 +153,7 @@ public class SolarSystem {
      * @return whether 2 solarSystems are the same
      */
     public boolean equals(SolarSystem ss) {
-        return name.equals(ss.getName()) && x == ss.x && y == ss.y;
+        return name.equals(ss.getName()) && (x == ss.x) && (y == ss.y);
     }
 
 }

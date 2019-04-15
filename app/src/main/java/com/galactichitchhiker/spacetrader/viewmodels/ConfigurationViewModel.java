@@ -3,16 +3,22 @@ package com.galactichitchhiker.spacetrader.viewmodels;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 
-import com.galactichitchhiker.spacetrader.models.*;
+import com.galactichitchhiker.spacetrader.models.Game;
+import com.galactichitchhiker.spacetrader.models.Model;
+import com.galactichitchhiker.spacetrader.models.Player;
 
 /*this view model is for the configuration screen. It checks user's input and if valid,
  * ask the model to setGame() based on the user's input
  */
+@SuppressWarnings("ALL")
+/**
+ * Player creation view model
+ */
 public class ConfigurationViewModel extends ViewModel {
-    
-    private int MAXIMUM_SKILL_POINTS = 16;
 
-    private Model model = Model.getInstance();
+    public static final int MAXIMUM_SKILL_POINTS = 16;
+
+    private final Model model = Model.getInstance();
 
     /**
      * create a Model
@@ -29,20 +35,26 @@ public class ConfigurationViewModel extends ViewModel {
                             int fighterPoints, Game.GameDifficulty difficultyLevel) {
         //check the validity of inputs before create a model
         int pointSum = pilotPoints + engineerPoints + traderPoints + fighterPoints;
-        if (pointSum == MAXIMUM_SKILL_POINTS && name.length() != 0) {
+        if ((pointSum == MAXIMUM_SKILL_POINTS) && !name.isEmpty()) {
             //call the setGame() method in Model to start the game
             //Model.getInstance() refers to the Model
             model.setGame(new Player(name, pilotPoints, engineerPoints, traderPoints,
                     fighterPoints), difficultyLevel);
             return "success";
-        } else if (name.length() == 0) {
+        } else if (name.isEmpty()) {
             return "Error: The name of the player can not be empty";
-        } else {
+        } else if (pointSum != MAXIMUM_SKILL_POINTS) {
             return "Error: The total skill points have to be 16";
         }
+        return "An error occurred...";
     }
 
 
+    /**
+     * Load game from file
+     * @param context
+     * @return boolean - whether game was loaded
+     */
     public boolean loadGame(Context context) {
         return Model.loadGame(context);
     }

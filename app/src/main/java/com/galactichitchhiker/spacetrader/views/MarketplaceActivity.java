@@ -13,16 +13,20 @@ import com.galactichitchhiker.spacetrader.R;
 import com.galactichitchhiker.spacetrader.models.TradeGoods;
 import com.galactichitchhiker.spacetrader.viewmodels.MarketplaceViewModel;
 
+import java.util.AbstractMap;
 import java.util.EnumMap;
 
+/**
+ * Marketplace screen
+ */
 public class MarketplaceActivity extends AppCompatActivity {
 
 
-    MarketplaceViewModel viewModel = new MarketplaceViewModel();
+    private final MarketplaceViewModel viewModel = new MarketplaceViewModel();
 
     //private MarketAdapter mAdapter;
     private TextView marketInfo;
-    private EnumMap<TradeGoods, TextView> countViews;
+    private AbstractMap<TradeGoods, TextView> countViews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,7 @@ public class MarketplaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_marketplace);
 
 
-        LinearLayout itemList = findViewById(R.id.item_list);
+        LinearLayout itemList = (LinearLayout) findViewById(R.id.item_list);
 
         LinearLayout itemView;
 
@@ -113,28 +117,24 @@ public class MarketplaceActivity extends AppCompatActivity {
         }
 
 
-        marketInfo = findViewById(R.id.market_info);
+        marketInfo = (TextView) findViewById(R.id.market_info);
         updateMarketInfo();
 
     }
 
 
-    public void updateMarketInfo() {
+    private void updateMarketInfo() {
 
-        int credits = viewModel.getGame().getPlayer().getCredits();
-
-        int spaceUsed = viewModel.getGame().getPlayer().getCurrentShip().getUsedCargoSpace();
-
-        int spaceTotal = viewModel.getGame().getPlayer().getCurrentShip().getMaxCargoSpace();
-
-        marketInfo.setText("Balance: $" + credits + ", Cargo Space: " + spaceUsed + "/"
-                + spaceTotal + ", Tech Level: " + viewModel.getTechLevel());
+        marketInfo.setText(viewModel.constructMarketInfoText());
 
         for (TradeGoods tg : TradeGoods.values()) {
 
-            if (countViews.get(tg) != null) {
-                countViews.get(tg).setText("   " + viewModel.countOf(tg) + "   ");
+            TextView cv = countViews.get(tg);
+
+            if (cv != null) {
+                cv.setText("   " + viewModel.countOf(tg) + "   ");
             }
+
         }
 
     }

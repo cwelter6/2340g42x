@@ -1,5 +1,9 @@
 package com.galactichitchhiker.spacetrader.models;
 
+@SuppressWarnings("FieldCanBeLocal")
+/**
+ * Hold trade goods
+ */
 public enum TradeGoods {
     WATER(0	, 0, 2, 30, 3, 4, "DROUGHT", "LOTSOFWATER",	"DESERT", 30,50),
     FURS(0, 0, 0, 250, 10, 10, "COLD", "RICHFAUNA",	"LIFELESS", 230, 280),

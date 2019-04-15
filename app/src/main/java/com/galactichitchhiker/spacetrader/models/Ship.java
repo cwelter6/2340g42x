@@ -28,7 +28,7 @@ public class Ship {
         fuel = fuelCapacity;
         usedCargoSpace = 0;
 
-        cargo = new HashMap<TradeGoods, Integer>();
+        cargo = new HashMap<>();
 
         for (TradeGoods g : TradeGoods.values()) {
             cargo.put(g, 0);
@@ -49,6 +49,11 @@ public class Ship {
      * @param newFuel amount of fuel to add
      */
     public void addFuel(double newFuel) {
+
+         if (newFuel < 0) {
+             return;
+         }
+
          fuel = fuel + newFuel;
          if (fuel > fuelCapacity) {
              fuel = fuelCapacity;
@@ -60,10 +65,14 @@ public class Ship {
      * @param sub amount substracted
      */
     public void subtractFuel(double sub) {
-        if (fuel - sub < 0) {
-            fuel = 0;
+        if (sub < 0) {
+            System.out.println("can not subtract negative numbers");
         } else {
-            fuel -= sub;
+            if (fuel - sub < 0) {
+                fuel = 0;
+            } else {
+                fuel -= sub;
+            }
         }
     }
 
@@ -89,11 +98,11 @@ public class Ship {
      * @return the amount of type g good we have
      */
     public int getCargoAmountOf(TradeGoods g) {
-        Integer cargoAmount = cargo.get(g);
-        if (cargoAmount == null) {
-            return 0;
+        try {
+            return cargo.get(g);
+        } catch (Exception e) {
+            return -1;
         }
-        return cargoAmount;
     }
 
     /**
@@ -104,13 +113,11 @@ public class Ship {
     public void addCargoOf(TradeGoods g, int num) {
 
 
-        if (maxCargoSpace < usedCargoSpace + num) {
+        if (maxCargoSpace < (usedCargoSpace + num) || num < 0) {
             return; //Not enough space
         }
-        Integer cargoAmount = cargo.get(g);
-        if (cargoAmount != null) {
-            cargo.put(g, cargoAmount + num);
-        }
+
+        cargo.put(g, getCargoAmountOf(g) + num);
 
         usedCargoSpace += num;
     }
@@ -121,14 +128,13 @@ public class Ship {
      * @param num the number of goods to be removed
      */
     public void removeCargoOf(TradeGoods g, int num) {
-        Integer cargoAmount = cargo.get(g);
-        if (cargoAmount != null) {
-            if (cargoAmount < num) {
-                return; //Not enough cargo
-            }
 
-            cargo.put(g, cargoAmount - num);
+        if (getCargoAmountOf(g) < num) {
+            return; //Not enough cargo
         }
+
+        cargo.put(g, getCargoAmountOf(g) - num);
+
         usedCargoSpace -= num;
     }
 

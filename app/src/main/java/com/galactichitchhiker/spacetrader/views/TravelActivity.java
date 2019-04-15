@@ -16,9 +16,12 @@ import com.galactichitchhiker.spacetrader.viewmodels.TravelViewModel;
 
 import java.util.List;
 
+/**
+ * Planet travel screen
+ */
 public class TravelActivity extends AppCompatActivity {
 
-    TravelViewModel viewModel = new TravelViewModel();
+    private final TravelViewModel viewModel = new TravelViewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +67,8 @@ public class TravelActivity extends AppCompatActivity {
             travelButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(c, viewModel.travel(ssF), Toast.LENGTH_SHORT).show();
+                    Toast t = Toast.makeText(c, viewModel.travel(ssF), Toast.LENGTH_SHORT);
+                    t.show();
 
                     Intent intent = new Intent(TravelActivity.this, ControlCenterActivity.class);
                     startActivity(intent);
@@ -76,7 +80,7 @@ public class TravelActivity extends AppCompatActivity {
             itemList.addView(itemView);
         }
 
-        if (ssList.size() == 0) {
+        if (ssList.isEmpty()) {
             TextView textView = new TextView(this);
             textView.setText("You don't have enough fuel to travel anywhere!");
 

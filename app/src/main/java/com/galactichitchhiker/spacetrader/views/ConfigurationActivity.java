@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,7 +20,12 @@ import com.galactichitchhiker.spacetrader.models.Game;
 import com.galactichitchhiker.spacetrader.models.Player;
 import com.galactichitchhiker.spacetrader.viewmodels.ConfigurationViewModel;
 
+/**
+ * Player creation screen
+ */
 public class ConfigurationActivity extends AppCompatActivity {
+
+    public static final int MAXIMUM_SKILL_POINTS = 16;
 
     private ConfigurationViewModel viewModel;
 
@@ -29,8 +35,6 @@ public class ConfigurationActivity extends AppCompatActivity {
     private Spinner traderSpinner;
     private Spinner fighterSpinner;
     private Spinner gameDifficultySpinner;
-
-    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +52,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         Button startButton = findViewById(R.id.start_game_button);
 
         //create the array of the skill point spinner for each skill
-        Integer[] possibleSkillPoints = new Integer[16];
+        Integer[] possibleSkillPoints = new Integer[MAXIMUM_SKILL_POINTS];
         for (int i = 0; i < possibleSkillPoints.length; i++) {
             possibleSkillPoints[i] = i + 1;
         }
@@ -84,12 +88,12 @@ public class ConfigurationActivity extends AppCompatActivity {
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gameDifficultySpinner.setAdapter(difficultyAdapter);
 
-        viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
+        viewModel = new ConfigurationViewModel();
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onStartPressed(view);
+                onStartPressed();
             }
         });
 
@@ -104,21 +108,23 @@ public class ConfigurationActivity extends AppCompatActivity {
                             PlayerInformationActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(context, "Could not load game!", Toast.LENGTH_LONG).show();
+                    Toast t = Toast.makeText(context, "Could not load game!", Toast.LENGTH_LONG);
+                    t.show();
                 }
             }
         });
 
     }
 
-    public void onStartPressed(View view) {
+    private void onStartPressed() {
         Log.d("Edit", "Start Button Pressed");
 
         int pilotPoints = (int) pilotSpinner.getSelectedItem();
         int engineerPoints = (int) engineerSpinner.getSelectedItem();
         int traderPoints = (int) traderSpinner.getSelectedItem();
         int fighterPoints = (int) fighterSpinner.getSelectedItem();
-        String playerName = nameField.getText().toString();
+        Editable field = nameField.getText();
+        String playerName = field.toString();
         Game.GameDifficulty difficulty = (Game.GameDifficulty) gameDifficultySpinner
                 .getSelectedItem();
 
@@ -136,8 +142,9 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         Log.d("Edit", "ViewModel Report: " + report);
 
-        if (!(report.equals("success"))) {
-            Toast.makeText(ConfigurationActivity.this, report, Toast.LENGTH_LONG).show();
+        if (!("success".equals(report))) {
+            Toast t = Toast.makeText(ConfigurationActivity.this, report, Toast.LENGTH_LONG);
+            t.show();
         } else {
             Log.d("Edit", "Before creating intent");
             Intent intent = new Intent(ConfigurationActivity.this, PlayerInformationActivity.class);
