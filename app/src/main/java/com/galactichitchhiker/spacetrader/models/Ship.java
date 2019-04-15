@@ -105,10 +105,11 @@ public class Ship {
      * @return the amount of type g good we have
      */
     public int getCargoAmountOf(TradeGoods g) {
-        try {
-            return cargo.get(g);
-        } catch (Exception e) {
-            return -1;
+        Integer cargoAmount = cargo.get(g);
+        if (cargoAmount != null) {
+            return cargoAmount;
+        } else {
+            return 0;
         }
     }
 
@@ -120,7 +121,7 @@ public class Ship {
     public void addCargoOf(TradeGoods g, int num) {
 
 
-        if (getMaxCargoSpace() < (usedCargoSpace + num)) {
+        if (getMaxCargoSpace() < (usedCargoSpace + num) || num < 0) {
             return; //Not enough space
         }
 
@@ -136,13 +137,13 @@ public class Ship {
      */
     public void removeCargoOf(TradeGoods g, int num) {
 
-        if (getCargoAmountOf(g) < num) {
+        if (getCargoAmountOf(g) < num || num < 0) {
             return; //Not enough cargo
         }
-
         cargo.put(g, getCargoAmountOf(g) - num);
 
         usedCargoSpace -= num;
+
     }
 
     /**
