@@ -46,7 +46,7 @@ public class Player {
         credits = 1000;
 
         currentShip = new Ship();
-        ownedShips = new ArrayList<Ship>();
+        ownedShips = new ArrayList<>();
         ownedShips.add(currentShip);
 
     }
@@ -108,7 +108,7 @@ public class Player {
     /**
      * Set pilot skill points
      *
-     * @param pilotPoints
+     * @param pilotPoints pilotPoints of the player
      */
     public void setPilotPoints(int pilotPoints) {
         this.pilotPoints = pilotPoints;
@@ -117,7 +117,7 @@ public class Player {
     /**
      * Set engineer skill points
      *
-     * @param engineerPoints
+     * @param engineerPoints engineerPoints of the player
      */
     public void setEngineerPoints(int engineerPoints) {
         this.engineerPoints = engineerPoints;
@@ -126,7 +126,7 @@ public class Player {
     /**
      * Set trader skill points
      *
-     * @param traderPoints
+     * @param traderPoints traderPoints of the player
      */
     public void setTraderPoints(int traderPoints) {
         this.traderPoints = traderPoints;
@@ -135,7 +135,7 @@ public class Player {
     /**
      * Set fighter skill points
      *
-     * @param fighterPoints
+     * @param fighterPoints fighterPoints of the player
      */
     public void setFighterPoints(int fighterPoints) {
         this.fighterPoints = fighterPoints;
@@ -189,7 +189,7 @@ public class Player {
     /**
      * Set player's current ship
      *
-     * @param ship
+     * @param ship the ship the player currently have
      */
     public void setCurrentShip(Ship ship) {
         this.currentShip = ship;
@@ -207,7 +207,7 @@ public class Player {
     /**
      * Add ship to player's list of ships
      *
-     * @param ship
+     * @param ship the ship the player will have
      */
     public void addShip(Ship ship) {
         ownedShips.add(ship);

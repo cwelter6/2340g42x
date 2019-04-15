@@ -1,6 +1,8 @@
 package com.galactichitchhiker.spacetrader.models;
 
 
+import android.support.annotation.NonNull;
+
 /**
  * Holds information for solar systems
  */
@@ -136,6 +138,7 @@ public class SolarSystem {
      * to String for the planet
      * @return the information about a planet
      */
+    @NonNull
     public String toString(){
 
         String s = "Planet\n";
