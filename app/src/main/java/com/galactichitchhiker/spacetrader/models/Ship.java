@@ -130,13 +130,9 @@ public class Ship {
      */
     public void removeCargoOf(TradeGoods g, int num) {
 
-        System.out.println("Cargo amount of g: " + getCargoAmountOf(g));
-        System.out.println("Num: " + num);
         if (getCargoAmountOf(g) < num || num < 0) {
-            System.out.println("In if statement");
             return; //Not enough cargo
         }
-        System.out.println("Past if statement");
         cargo.put(g, getCargoAmountOf(g) - num);
 
         usedCargoSpace -= num;
