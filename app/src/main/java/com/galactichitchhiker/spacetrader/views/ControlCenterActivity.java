@@ -29,7 +29,7 @@ public class ControlCenterActivity extends AppCompatActivity {
         //Get current info text view
         TextView infoView = findViewById(R.id.current_info);
 
-        infoView.setText(viewModel.constuctInfoViewText());
+        infoView.setText(viewModel.constructInfoViewText());
 
 
         //Travel button

@@ -75,7 +75,7 @@ public class ControlCenterViewModel extends ViewModel {
      * Construct text for control center info
      * @return String
      */
-    public String constuctInfoViewText(){
+    public String constructInfoViewText(){
         String info = "Current Planet: " + getCurrentSolarSystemName();
         info += "\nCurrent Location: (" + getPlayerX() + ", " + getPlayerY()
                 + ")";

@@ -67,7 +67,7 @@ public class Ship {
 
     /**
      * subtract fuel from the ship
-     * @param sub amount substracted
+     * @param sub amount subtracted
      */
     public void subtractFuel(double sub) {
         if (sub >= 0) {
