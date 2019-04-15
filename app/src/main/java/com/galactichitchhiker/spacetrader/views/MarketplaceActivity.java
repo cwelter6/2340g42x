@@ -64,9 +64,6 @@ public class MarketplaceActivity extends AppCompatActivity {
             TextView itemCost;
             TextView itemCount;
 
-            Button buyButton;
-            Button sellButton;
-
 
             itemView = new LinearLayout(this);
 
