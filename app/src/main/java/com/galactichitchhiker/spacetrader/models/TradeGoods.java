@@ -1,5 +1,9 @@
 package com.galactichitchhiker.spacetrader.models;
 
+
+/**
+ * Holds trade goods
+ */
 public enum TradeGoods {
     WATER(0	, 0, 2, 30, 3, 4, "DROUGHT", "LOTSOFWATER",	"DESERT", 30,50),
     FURS(0, 0, 0, 250, 10, 10, "COLD", "RICHFAUNA",	"LIFELESS", 230, 280),
@@ -13,19 +17,19 @@ public enum TradeGoods {
     ROBOTS(6, 4, 7, 5000, -150, 100, "LACKOFWORKERS", "Never",	"Never", 3500, 5000);
 
 
-    private int MTLP;
-    private int MTLU;
-    private int TTP;
-    private int basePrice;
-    private int IPL;
-    private int Var;
-    private String IE;
-    private String CR;
-    private String ER;
-    private int MTL;
-    private int MTH;
+    private final int MTLP; //Minimum Tech Level to produce
+    private final int MTLU; //Minimum Tech Level to use
+    private final int TTP; //Tech Level which produces most of this item
+    private final int basePrice;
+    private final int IPL; //Price increase per tech level
+    private final int Var; //Maximum percentage that the price can vary above or below the base
+    private final String IE; //Radical price increase event
+    private final String CR; //Cheap price condition
+    private final String ER; //Expensive price condition
+    private final int MTL; //Minimum price offered in space trade with random trader
+    private final int MTH; //Maximum price offered in space trade with random trader
 
-    TradeGoods(int MTLP, int MTLU, int TTP, int basePrice	, int IPL,
+    TradeGoods(int MTLP, int MTLU, int TTP, int basePrice, int IPL,
                int	Var, String IE, String CR, String ER, int MTL, int MTH) {
 
         this.MTLP = MTLP;
@@ -41,17 +45,36 @@ public enum TradeGoods {
         this.MTH = MTH;
     }
 
+    /**
+     * Determine whether player can buy at a certain tech level
+     *
+     * @param techLevel - Tech level of planet
+     * @return boolean - whether player can buy this good
+     */
     public boolean canBuyAt(int techLevel) {
-        return MTLP > techLevel;
+        return techLevel >= MTLP;
 
     }
 
+
+    /**
+     * Determine whether a player can sell at a given tech level
+     *
+     * @param techLevel - Tech level of planet
+     * @return boolean - whether player can sell this good
+     */
     public boolean canSellAt(int techLevel) {
-        return MTLU < techLevel;
+        return techLevel >= MTLU;
     }
 
-    public int getPrice(int TechLevel) {
-        return basePrice + (IPL * (TechLevel - MTLP)) + ((int)Math.random() * 4);
 
+    /**
+     *  Calculate price of resource using plane's techlevel
+     *
+     * @param techLevel - Tech level of planet
+     * @return int - price of good
+     */
+    public int getPrice(int techLevel) {
+        return basePrice + (IPL * (techLevel - MTLP)) + (basePrice * ((int) (Math.random() * Var)));
     }
 }

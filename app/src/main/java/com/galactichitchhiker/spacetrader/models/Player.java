@@ -1,7 +1,7 @@
 package com.galactichitchhiker.spacetrader.models;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Holds player information and all getter and setter methods
@@ -22,6 +22,8 @@ public class Player {
     private Ship currentShip;
     private List<Ship> ownedShips;
 
+    private SolarSystem currentSolarSystem;
+
     /**
      * Creates a player object
      *
@@ -31,7 +33,8 @@ public class Player {
      * @param traderPoints   - trader skill points
      * @param fighterPoints  - fighter skill points
      */
-    public Player(String name, int pilotPoints, int engineerPoints, int traderPoints, int fighterPoints) {
+    public Player(String name, int pilotPoints, int engineerPoints, int traderPoints,
+                  int fighterPoints) {
 
         this.name = name;
 
@@ -43,7 +46,7 @@ public class Player {
         credits = 1000;
 
         currentShip = new Ship();
-        ownedShips = new ArrayList<Ship>();
+        ownedShips = new ArrayList<>();
         ownedShips.add(currentShip);
 
     }
@@ -105,7 +108,7 @@ public class Player {
     /**
      * Set pilot skill points
      *
-     * @param pilotPoints
+     * @param pilotPoints pilotPoints of the player
      */
     public void setPilotPoints(int pilotPoints) {
         this.pilotPoints = pilotPoints;
@@ -114,7 +117,7 @@ public class Player {
     /**
      * Set engineer skill points
      *
-     * @param engineerPoints
+     * @param engineerPoints engineerPoints of the player
      */
     public void setEngineerPoints(int engineerPoints) {
         this.engineerPoints = engineerPoints;
@@ -123,7 +126,7 @@ public class Player {
     /**
      * Set trader skill points
      *
-     * @param traderPoints
+     * @param traderPoints traderPoints of the player
      */
     public void setTraderPoints(int traderPoints) {
         this.traderPoints = traderPoints;
@@ -132,7 +135,7 @@ public class Player {
     /**
      * Set fighter skill points
      *
-     * @param fighterPoints
+     * @param fighterPoints fighterPoints of the player
      */
     public void setFighterPoints(int fighterPoints) {
         this.fighterPoints = fighterPoints;
@@ -186,7 +189,7 @@ public class Player {
     /**
      * Set player's current ship
      *
-     * @param ship ship
+     * @param ship the ship the player currently have
      */
     public void setCurrentShip(Ship ship) {
         this.currentShip = ship;
@@ -204,10 +207,190 @@ public class Player {
     /**
      * Add ship to player's list of ships
      *
-     * @param ship ship
+     * @param ship the ship the player will have
      */
     public void addShip(Ship ship) {
         ownedShips.add(ship);
+    }
+
+    /**
+     * Get player's current solar system
+     *
+     * @return SolarSystem
+     */
+    public SolarSystem getCurrentSolarSystem() {
+        return currentSolarSystem;
+    }
+
+    /**
+     * Set player's current solar system
+     *
+     * @param s player's new solar system
+     */
+    public void setCurrentSolarSystem(SolarSystem s) {
+        this.currentSolarSystem = s;
+    }
+
+    /**
+     * Get player's x coordinate
+     *
+     * @return int
+     */
+    public int getX() {
+        return currentSolarSystem.getX();
+    }
+
+    /**
+     * Get player's y coordinate
+     *
+     * @return int
+     */
+    public int getY() {
+        return currentSolarSystem.getY();
+    }
+
+    /**
+     * Moves the player to another solar system
+     *
+     * @param s - solar system to travel to
+     * @return String - message summarizing the travel
+     */
+    public String travel(SolarSystem s) {
+        if (canTravelTo(s)) {
+            currentShip.subtractFuel(distanceTo(s.getX(), s.getY())/10);
+            setCurrentSolarSystem(s);
+
+
+            if (Math.random()*100 < 50) {
+
+                credits += 100;
+                return "Traveled to " + s.getName() + " and found 100 credits!";
+
+            }
+
+
+            return "Traveled to " + s.getName();
+        } else {
+            return "Not enough fuel!";
+        }
+    }
+
+    /**
+     * Determine if player has enough fuel to travel to a solar system
+     *
+     * @param s - solar system
+     * @return boolean - whether the player can travel to the solar system
+     */
+    public boolean canTravelTo(SolarSystem s) {
+        return currentShip.getFuel() >= distanceTo(s.getX(), s.getY())/10;
+    }
+
+
+    /**
+     * Calculate the distance from the player to a certain coordinate
+     *
+     * @param finalX - x coordinate of destination
+     * @param finalY - y coordinate of destination
+     * @return double - distance to destination
+     */
+    private double distanceTo(int finalX, int finalY) {
+        int distanceX = finalX - getX();
+        int distanceY = finalY - getY();
+        return Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
+    }
+
+
+    /**
+     * Get current fuel level
+     *
+     * @return double - fuel
+     */
+    public double getCurrentFuel() {
+        return currentShip.getFuel();
+    }
+
+    /**
+    * Get max fuel level
+    *
+    * @return double - max fuel
+    */
+    public double getMaxFuel() {
+        return currentShip.getFuelCapacity();
+    }
+
+    /**
+    * Get used cargo space
+    *
+    * @return int
+    */
+    public int getUsedCargoSpace() {
+       return currentShip.getUsedCargoSpace();
+    }
+
+    /**
+    * Get max cargo space
+    *
+    * @return int
+    */
+    public int getMaxCargoSpace() {
+       return currentShip.getMaxCargoSpace();
+    }
+
+    /**
+    * Get remaining cargo space
+    *
+    * @return int
+    */
+    public int getRemainingCargoSpace() {
+       return currentShip.getRemainingCargoSpace();
+    }
+
+    /**
+    * Get tech level as int
+    *
+    * @return int
+    */
+    public int getTechLevelAsInt() {
+       return currentSolarSystem.getTechLevel().ordinal();
+    }
+
+   /**
+     * get the amount of cargo of type g we have
+     * @param g the type of the trade good
+     * @return the amount of type g good we have
+     */
+    public int getCargoAmountOf(TradeGoods g) {
+        return currentShip.getCargoAmountOf(g);
+    }
+
+    /**
+     * add cargo
+     * @param g the type of goods to be added
+     * @param num the number of goods to be added
+     */
+    public void addCargoOf(TradeGoods g, int num) {
+
+        currentShip.addCargoOf(g, num);
+
+    }
+
+    /**
+     * remove cargo
+     * @param g the type of goods to be removed
+     * @param num the number of goods to be removed
+     */
+    public void removeCargoOf(TradeGoods g, int num) {
+
+        currentShip.removeCargoOf(g, num);
+
+    }
+
+    /**
+     * Get name of current solar system
+     * @return String
+     */
+    public String getCurrentSolarSystemName(){
+        return currentSolarSystem.getName();
     }
 
 }

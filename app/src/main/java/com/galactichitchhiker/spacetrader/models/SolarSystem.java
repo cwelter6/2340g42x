@@ -1,5 +1,8 @@
 package com.galactichitchhiker.spacetrader.models;
 
+
+import android.support.annotation.NonNull;
+
 /**
  * Holds information for solar systems
  */
@@ -131,17 +134,30 @@ public class SolarSystem {
         return resources;
     }
 
-
+    /**
+     * to String for the planet
+     * @return the information about a planet
+     */
+    @NonNull
     public String toString(){
 
         String s = "Planet\n";
         s += "Name: " + name + "\n";
         s += "Location: (" + x + ", " + y + ")" + "\n";
-        s += "Tech Level: " + getTechLevel().name() + "\n";
-        s += "Resources: " + getResources().name() + "\n";
+        s += "Tech Level: " + techLevel.name() + "\n";
+        s += "Resources: " + resources.name() + "\n";
 
         return s;
 
+    }
+
+    /**
+     * find out whether 2 solarSystems are the same
+     * @param ss the solarSystem being compared
+     * @return whether 2 solarSystems are the same
+     */
+    public boolean equals(SolarSystem ss) {
+        return name.equals(ss.getName()) && (x == ss.x) && (y == ss.y);
     }
 
 }
